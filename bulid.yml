@@ -8,7 +8,7 @@ on:
     
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - name: Checkout this repo
       uses: actions/checkout@v3
@@ -64,3 +64,4 @@ jobs:
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD"
+      #  -Ddecryption.key="$DECRYPTION_KEY"
