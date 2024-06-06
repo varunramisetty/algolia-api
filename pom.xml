@@ -39,12 +39,13 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${app.runtime}</muleVersion>
-						<username>${username}</username>
-						<password>${password}</password><applicationName>${cloudhub.application.name}</applicationName>
-						<environment>${environment}</environment>
+						<username>AlgoliaProject</username>
+						<password>Algolia123</password>
+						<applicationName>algolia-api-1234</applicationName>
+						<environment>Sandbox</environment>
 						<region>${region}</region>
-						<workers>${workers}</workers>
-						<workerType>${workerType}</workerType>
+						<workers>1</workers>
+						<workerType>MICRO</workerType>
 						<properties><key>value</key></properties>
 					</cloudHubDeployment>
 				</configuration>
