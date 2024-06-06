@@ -3,17 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>algolia-api</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<artifactId>algolia-api1</artifactId>
+	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
 
-	<name>algolia-api</name>
+	<name>algolia-api1</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.6.1</app.runtime>
+		<app.runtime>4.4.0-20230320</app.runtime>
 		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
 	</properties>
 
@@ -33,21 +33,24 @@
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>3.7.1</version>
+				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
-						<muleVersion>${app.runtime}</muleVersion>
+						<muleVersion>4.4.0</muleVersion>
 						<username>AlgoliaProject</username>
 						<password>Algolia123</password>
-						<applicationName>algolia-api-1234</applicationName>
+						<applicationName>algolia-api1</applicationName>
 						<environment>Sandbox</environment>
-						<region>${region}</region>
+						<region>us-east-2</region>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
-						<properties><key>value</key></properties>
+						<properties>
+							<key>value</key>
+						</properties>
 					</cloudHubDeployment>
+					<classifier>mule-application</classifier>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -57,13 +60,7 @@
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-http-connector</artifactId>
-			<version>1.9.1</version>
-			<classifier>mule-plugin</classifier>
-		</dependency>
-		<dependency>
-			<groupId>org.mule.connectors</groupId>
-			<artifactId>mule-sockets-connector</artifactId>
-			<version>1.2.4</version>
+			<version>1.7.3</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
