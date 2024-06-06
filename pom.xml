@@ -56,6 +56,11 @@
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
 				</configuration>
+				<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
+				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
@@ -70,7 +75,17 @@
 							<key>value</key>
 						</properties>
 					</cloudHubDeployment>
-					<configuration>
+					<classifier>mule-application</classifier>
+				</configuration>
+					<classifier>mule-application</classifier>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
@@ -86,9 +101,6 @@
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
 				</configuration>
-					<classifier>mule-application</classifier>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 
