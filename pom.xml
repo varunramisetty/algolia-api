@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>algolia-api1</artifactId>
+	<artifactId>algolia-api1234</artifactId>
 	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
 
-	<name>algolia-api1</name>
+	<name>algolia-api1234</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,6 +15,11 @@
 
 		<app.runtime>4.4.0-20230320</app.runtime>
 		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
+		
+		<anypoint.platform.client_id>0558cf2627bc402caf554b6fb3794bc5</anypoint.platform.client_id>
+		<anypoint.platform.client_secret>CF9F7b2eE82D4e29904e35D8255946f0</anypoint.platform.client_secret>
+
+
 	</properties>
 
 	<build>
@@ -41,9 +46,8 @@
 						<muleVersion>4.4.0</muleVersion>
 						<username>AlgoliaProject</username>
 						<password>Algolia123</password>
-						<applicationName>algolia-api1</applicationName>
+						<applicationName>algolia-api1234</applicationName>
 						<environment>dev</environment>
-						<region>us-east-2</region>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
 						<properties>
