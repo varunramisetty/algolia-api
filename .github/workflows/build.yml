@@ -1,4 +1,4 @@
-name: Build and Deploy to Sandbox
+name: Build and Deploy to qa
 
 on:
   push:
@@ -54,9 +54,9 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: artifacts
-    - name: Deploy to Sandbox
+    - name: Deploy to qa
       env:
-        name: dev
+        name: qa
         USERNAME: ${{ secrets.anypoint_platform_username }}
         PASSWORD: ${{ secrets.anypoint_platform_password }}
       run: |
