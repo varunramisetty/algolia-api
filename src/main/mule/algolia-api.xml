@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="758dfd85-4e0e-4a68-a4cb-d4cda2e4fc3d" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="algolia-apiFlow" doc:id="d20acaaf-7efc-4c1f-aa75-bf99e28089a5" >
+		<http:listener doc:name="Listener" doc:id="d6404cc9-9dfe-44ba-a049-7e3bc5dfacd9" config-ref="HTTP_Listener_config" path="/algolia"/>
+		<set-payload value='#["sucess"]' doc:name="Set Payload" doc:id="e2b5871b-e167-4ac4-8c7a-c622f61beac5" />
+	</flow>
+</mule>
