@@ -51,10 +51,6 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    - uses: actions/download-artifact@v3
-      with:
-        name: artifacts
-    - name: Deploy to dev
     - uses: trstringer/manual-approval@v1
       with:
         secret: ${{ github.TOKEN }}
@@ -82,10 +78,6 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    - uses: actions/download-artifact@v3
-      with:
-        name: artifacts
-    - name: Deploy to qa
     - uses: trstringer/manual-approval@v1
       with:
         secret: ${{ github.TOKEN }}
@@ -113,10 +105,6 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    - uses: actions/download-artifact@v3
-      with:
-        name: artifacts
-    - name: Deploy to prod
     - uses: trstringer/manual-approval@v1
       with:
         secret: ${{ github.TOKEN }}
