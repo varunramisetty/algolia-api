@@ -42,7 +42,7 @@
 						<username>AlgoliaProject</username>
 						<password>Algolia123</password>
 						<applicationName>algolia-api1</applicationName>
-						<environment>Sandbox</environment>
+						<environment>dev</environment>
 						<region>us-east-2</region>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
