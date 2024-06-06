@@ -55,6 +55,11 @@ jobs:
       with:
         name: artifacts
     - name: Deploy to dev
+    - uses: trstringer/manual-approval@v1
+      with:
+        secret: ${{ github.TOKEN }}
+        approvers: trstringer,acdunnigan
+    - name: Deploy to dev
       env:
         USERNAME: ${{ secrets.anypoint_platform_username }}
         PASSWORD: ${{ secrets.anypoint_platform_password }}
@@ -81,6 +86,11 @@ jobs:
       with:
         name: artifacts
     - name: Deploy to qa
+    - uses: trstringer/manual-approval@v1
+      with:
+        secret: ${{ github.TOKEN }}
+        approvers: trstringer,acdunnigan
+    - name: Deploy to qa
       env:
         USERNAME: ${{ secrets.anypoint_platform_username }}
         PASSWORD: ${{ secrets.anypoint_platform_password }}
@@ -106,6 +116,11 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: artifacts
+    - name: Deploy to prod
+    - uses: trstringer/manual-approval@v1
+      with:
+        secret: ${{ github.TOKEN }}
+        approvers: trstringer,acdunnigan
     - name: Deploy to prod
       env:
         USERNAME: ${{ secrets.anypoint_platform_username }}
