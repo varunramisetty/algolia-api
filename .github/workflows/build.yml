@@ -51,10 +51,10 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    - uses: trstringer/manual-approval@v1
+    - uses: GayathriNuthalapati/manual-approval@v1
       with:
         secret: ${{ github.TOKEN }}
-        approvers: trstringer,acdunnigan
+        approvers: GayathriNuthalapati
     - name: Deploy to dev
       env:
         USERNAME: ${{ secrets.anypoint_platform_username }}
@@ -78,10 +78,10 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    - uses: trstringer/manual-approval@v1
+    - uses: GayathriNuthalapati/manual-approval@v1
       with:
         secret: ${{ github.TOKEN }}
-        approvers: trstringer,acdunnigan
+        approvers: GayathriNuthalapati
     - name: Deploy to qa
       env:
         USERNAME: ${{ secrets.anypoint_platform_username }}
@@ -105,10 +105,10 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    - uses: trstringer/manual-approval@v1
+    - uses: GayathriNuthalapati/manual-approval@v1
       with:
         secret: ${{ github.TOKEN }}
-        approvers: trstringer,acdunnigan
+        approvers: GayathriNuthalapati
     - name: Deploy to prod
       env:
         USERNAME: ${{ secrets.anypoint_platform_username }}
