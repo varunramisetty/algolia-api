@@ -56,7 +56,6 @@ jobs:
         name: artifacts
     - name: Deploy to dev
       env:
-        name: dev
         USERNAME: ${{ secrets.anypoint_platform_username }}
         PASSWORD: ${{ secrets.anypoint_platform_password }}
       run: |
