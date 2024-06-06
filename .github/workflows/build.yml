@@ -1,4 +1,4 @@
-name: Build and Deploy to dev
+name: Build and Deploy to Sandbox
 
 on:
   push:
@@ -54,7 +54,7 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: artifacts
-    - name: Deploy to dev
+    - name: Deploy to Sandbox
       env:
         USERNAME: ${{ secrets.anypoint_platform_username }}
         PASSWORD: ${{ secrets.anypoint_platform_password }}
