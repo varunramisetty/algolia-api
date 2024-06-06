@@ -16,8 +16,8 @@
 		<app.runtime>4.4.0-20230320</app.runtime>
 		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
 		
-		<anypoint.platform.client_id>0558cf2627bc402caf554b6fb3794bc5</anypoint.platform.client_id>
-		<anypoint.platform.client_secret>CF9F7b2eE82D4e29904e35D8255946f0</anypoint.platform.client_secret>
+		<anypoint.platform.client_id>75bfb70be7414a12a750162a6f790218</anypoint.platform.client_id>
+		<anypoint.platform.client_secret>fe93034E96CE40D0b1AE8Bcd6b8f1f82</anypoint.platform.client_secret>
 
 
 	</properties>
