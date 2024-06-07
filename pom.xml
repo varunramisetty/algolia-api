@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>com.mycompany</groupId>
 	<artifactId>algolia-api1234</artifactId>
 	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
-
 	<name>algolia-api1234</name>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.4.0-20230320</app.runtime>
 		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
-		
-		<anypoint.platform.client_id>0558cf2627bc402caf554b6fb3794bc5</anypoint.platform.client_id>
-		<anypoint.platform.client_secret>CF9F7b2eE82D4e29904e35D8255946f0</anypoint.platform.client_secret>
-
-
 	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -62,7 +53,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
@@ -71,7 +61,6 @@
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
-
 	<repositories>
 		<repository>
 			<id>anypoint-exchange-v3</id>
@@ -86,7 +75,6 @@
 			<layout>default</layout>
 		</repository>
 	</repositories>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>mulesoft-releases</id>
@@ -98,5 +86,4 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
 </project>
