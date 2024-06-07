@@ -5,7 +5,8 @@ on:
     branches:
       - sample
   pull_request:
-    branches: [ sample ]
+    branches:
+      - sample
 
 jobs:
   build:
@@ -38,7 +39,17 @@ jobs:
       with:
           name: artifacts
           path: target/*.jar
-  
+
+  approve-dev:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Await approval for all deployments
+        uses: TiborTichy/wait-for-approval-action@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          reviewers: 'GayathriNuthalapati, Madhav547'
+          approveLabel: 'approved'
 
   deploydev:
     needs: build
@@ -69,16 +80,7 @@ jobs:
          -Denv=dev \
          -Dappname=algolia-123243
          
-  approve-qa:
-    needs: deploydev
-    runs-on: ubuntu-latest
-    steps:
-      - name: Await approval for all deployments
-        uses: TiborTichy/wait-for-approval-action@v1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          reviewers: 'GayathriNuthalapati, Madhav547'
-          approveLabel: 'approved'
+
          
   deployqa:
     needs: deploydev
