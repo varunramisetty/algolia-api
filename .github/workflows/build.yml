@@ -65,7 +65,6 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=dev 
   deployqa:
-    if: github.ref == 'refs/heads/main'
     needs: [deploy-dev]
     runs-on: ubuntu-latest
     steps:    
@@ -94,7 +93,6 @@ jobs:
          -Denv=qa
   
   deploy-prod:
-    if: github.ref == 'refs/heads/main'
     needs: [deployqa]
     runs-on: ubuntu-latest
     steps:    
