@@ -67,7 +67,7 @@ jobs:
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
-         -Denv=dev \
+         -Denv= dev \
          -Dappname=algolia-123243
          
   deployqa:
