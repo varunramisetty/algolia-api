@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - sample
+  pull_request:
+    branches: [ sample ]
 
 jobs:
   build:
@@ -71,7 +73,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Await approval for all deployments
-        uses: algolia-api/auto-approve-action@v2.1.0
+      - uses: algolia-api/auto-approve-action@v2.1.0
         with:
           github-token: ${{ secrets.TOKEN_GITHUB }}
           users: GayathriNuthalapati, Madhav547
