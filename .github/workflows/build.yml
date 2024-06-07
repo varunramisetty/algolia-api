@@ -61,10 +61,9 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    - uses: algolia-api/manual-approval@v1
+    - uses: actions/download-artifact@v3
       with:
-        secret: ${{ github.TOKEN }}
-        approvers: algolia-api
+        name: artifacts
     - name: Deploy to qa
       env:
         USERNAME: ${{ secrets.anypoint_platform_username }}
@@ -91,10 +90,9 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    - uses: algolia-api/manual-approval@v1
+    - uses: actions/download-artifact@v3
       with:
-        secret: ${{ github.TOKEN }}
-        approvers: algolia-api
+        name: artifacts
     - name: Deploy to prod
       env:
         USERNAME: ${{ secrets.anypoint_platform_username }}
