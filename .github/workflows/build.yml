@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Await approval for all deployments
-        uses: "Madhav547/auto-approve-action@v2.1.0"
+        uses: Madhav547/auto-approve-action@v2.1.0
         with:
           github-token: ${{ secrets.TOKEN_GITHUB }}
           users: GayathriNuthalapati, Madhav547
