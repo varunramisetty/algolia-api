@@ -66,7 +66,7 @@ jobs:
          -Denv=dev \
          -Dappname=algolia-123243
   approve-qa:
-    if: github.ref == 'refs/heads/sample'
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     needs: deploydev
     runs-on: [ubuntu-latest,windows-latest]
     steps:
