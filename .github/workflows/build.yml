@@ -40,17 +40,6 @@ jobs:
           name: artifacts
           path: target/*.jar
 
-  approve-dev:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Await approval for all deployments
-        uses: TiborTichy/wait-for-approval-action@v1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          reviewers: 'GayathriNuthalapati, Madhav547'
-          approveLabel: 'approved'
-
   deploydev:
     needs: build
     runs-on: ubuntu-latest
@@ -79,9 +68,7 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=dev \
          -Dappname=algolia-123243
-         
 
-         
   deployqa:
     needs: deploydev
     runs-on: ubuntu-latest
