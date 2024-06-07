@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>com.mycompany</groupId>
 	<artifactId>algolia-api1234</artifactId>
 	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
-
 	<name>algolia-api1234</name>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -20,8 +17,8 @@
 		<anypoint.platform.client_secret>CF9F7b2eE82D4e29904e35D8255946f0</anypoint.platform.client_secret>
 
 
-	</properties>
 
+	</properties>
 	<build>
 		<plugins>
 			<plugin>
@@ -44,8 +41,8 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
-						<!--<username>AlgoliaProject</username>
-						<password>Algolia123</password>-->
+						<!--<username>${anypoint.username}</username>
+						<password>${anypoint.password}</password>-->
 						<connectedAppClientId>${anypoint.username}</connectedAppClientId>
 						<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret>
 						<connectedAppGrantType>client_credentials</connectedAppGrantType>
@@ -62,7 +59,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
@@ -71,7 +67,6 @@
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
-
 	<repositories>
 		<repository>
 			<id>anypoint-exchange-v3</id>
@@ -86,7 +81,6 @@
 			<layout>default</layout>
 		</repository>
 	</repositories>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>mulesoft-releases</id>
@@ -98,5 +92,4 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
 </project>
