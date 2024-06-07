@@ -1,12 +1,7 @@
-name: Deploy MuleSoft Application
+name: Reusable Workflow To Deploy MuleSoft Application
  
 on:
-  push:
-    branches:
-      - sample
-  pull_request:
-    branches:
-      - sample
+  workflow_call:
 
 jobs:
   build:
