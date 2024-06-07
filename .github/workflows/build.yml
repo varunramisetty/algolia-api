@@ -55,8 +55,8 @@ jobs:
         name: artifacts
     - name: Deploy to dev
       env:
-        USERNAME: ${{ secrets.anypoint_platform_username }}
-        PASSWORD: ${{ secrets.anypoint_platform_password }}
+        USERNAME: ${{ secrets.connected_app_client_id }}
+        PASSWORD: ${{ secrets.connected_app_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
@@ -83,8 +83,8 @@ jobs:
         name: artifacts
     - name: Deploy to qa
       env:
-        USERNAME: ${{ secrets.anypoint_platform_username }}
-        PASSWORD: ${{ secrets.anypoint_platform_password }}
+        USERNAME: ${{ secrets.connected_app_client_id }}
+        PASSWORD: ${{ secrets.connected_app_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
