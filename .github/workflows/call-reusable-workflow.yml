@@ -10,4 +10,4 @@ on:
 
 jobs:
   call-workflow:
-    uses: .github/workflows/mule-deploy-workflow.yml@test
+    uses: GayathriNuthalapati/algolia-api/.github/workflows/mule-deploy-workflow.yml@test
