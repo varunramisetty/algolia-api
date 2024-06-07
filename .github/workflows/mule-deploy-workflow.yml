@@ -63,7 +63,7 @@ jobs:
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
          -Denv=dev \
-         -Dappname=test-algolia-123243
+         -Dappname=algolia-123243
   deployqa:
     needs: deploydev
     runs-on: ubuntu-latest
@@ -91,7 +91,7 @@ jobs:
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
          -Denv=qa \
-         -Dappname=test-algolia-123243-qa
+         -Dappname=algolia-123243-qa
   
   deployprod:
     needs: deployqa
@@ -120,4 +120,4 @@ jobs:
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
          -Denv=prod \
-         -Dappname=test-algolia-123243-prod
+         -Dappname=algolia-123243-prod
