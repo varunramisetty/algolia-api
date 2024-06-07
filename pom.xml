@@ -48,6 +48,7 @@
 						<password>Algolia123</password>-->
 						<connectedAppClientId>e5f1cab2df6d443288335b0f022ce2fc</connectedAppClientId>
 						<connectedAppClientSecret>5266F45ff17b4C999f585ebF1Baff332</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<applicationName>${appname}</applicationName>
 						<environment>${env}</environment>
 						<workers>1</workers>
