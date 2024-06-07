@@ -40,37 +40,9 @@ jobs:
           name: artifacts
           path: target/*.jar
 
-  deploydev:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:    
-    - name: Checkout this repo
-      uses: actions/checkout@v3
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
-    - uses: actions/download-artifact@v3
-      with:
-        name: artifacts
-    - name: Deploy to dev
-      env:
-        USERNAME: ${{ secrets.connected_app_client_id }}
-        PASSWORD: ${{ secrets.connected_app_client_secret}}
-      run: |
-        artifactName=$(ls *.jar | head -1)
-        mvn deploy -DmuleDeploy \
-         -Dmule.artifact=$artifactName \
-         -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" \
-         -Denv=dev \
-         -Dappname=algolia-12324355
-         
+  
   deployqa:
-    needs: deploydev
+    needs: build
     runs-on: ubuntu-latest
     steps:    
     - name: Checkout this repo
