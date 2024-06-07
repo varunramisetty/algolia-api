@@ -4,11 +4,10 @@ on:
   push:
     branches:
       - sample
-      - main
   pull_request:
     branches:
       - sample
-      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -70,7 +69,6 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=dev \
          -Dappname=algolia-123243
-
   deployqa:
     needs: deploydev
     runs-on: ubuntu-latest
