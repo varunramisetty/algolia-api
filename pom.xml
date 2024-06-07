@@ -47,7 +47,7 @@
 						<username>AlgoliaProject</username>
 						<password>Algolia123</password>
 						<applicationName>algolia-api123412</applicationName>
-						<!--<environment>${env}</environment>-->
+						<environment>${env}</environment>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
 						<properties>
