@@ -36,6 +36,18 @@ jobs:
       with:
           name: artifacts
           path: target/*.jar
+  approval:
+      needs: build
+      runs-on: ubuntu-latest
+
+      steps:
+      - name: Request approval
+        uses: "marvinpinto/action-automatic-approvals@v1"
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          users: username1, username2
+          teams: team1, team2
+          approvers: 2
  
   deploydev:
     needs: build
