@@ -68,21 +68,22 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=dev \
          -Dappname=algolia-123243
+         
   approve-qa:
-    needs: build
+    needs: deploydev
     runs-on: ubuntu-latest
     steps:
       - name: Await approval for all deployments
       - uses: algolia-api/auto-approve-action@v2.1.0
         with:
-          github-token: ${{ secrets.TOKEN_GITHUB }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           users: GayathriNuthalapati, Madhav547
           approvers: 2
           approval-comment: 'Please approve the deployment to QA.'
          
   deployqa:
     if: github.ref == 'refs/heads/dev'
-    needs: deploydev
+    needs: approve-qa
     runs-on: ubuntu-latest
     steps:    
     - name: Checkout this repo
