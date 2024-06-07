@@ -40,6 +40,17 @@ jobs:
           name: artifacts
           path: target/*.jar
 
+  approve-qa:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Await approval for QA deployment
+        uses: actions/auto-approve-action@v2
+        with:
+          github-token: ${{ secrets.TOKEN }}
+          reviewers: 'GayathriNuthalapati, Madhav547'
+          approve-label: 'qa-approved'
+
   deploydev:
     needs: build
     runs-on: ubuntu-latest
