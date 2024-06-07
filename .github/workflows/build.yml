@@ -74,16 +74,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Await approval for all deployments
-        uses: algolia-api/auto-approve-action@v2.1.0
+        uses: TiborTichy/wait-for-approval-action@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          users: GayathriNuthalapati, Madhav547
-          approvers: 2
-          approval-comment: 'Please approve the deployment to QA.'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          reviewers: 'GayathriNuthalapati, Madhav547'
+          approveLabel: 'approved'
          
   deployqa:
-    if: github.ref == 'refs/heads/dev'
-    needs: approve-qa
+    needs: deploydev
     runs-on: ubuntu-latest
     steps:    
     - name: Checkout this repo
