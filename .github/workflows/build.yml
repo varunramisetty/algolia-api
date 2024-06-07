@@ -1,11 +1,10 @@
-name: Build and Deploy to sample
-
+name: Deploy MuleSoft Application
+ 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-    
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,7 +36,18 @@ jobs:
       with:
           name: artifacts
           path: target/*.jar
-        
+  approval:
+      needs: build
+      runs-on: ubuntu-latest
+
+      steps:
+      - name: Request approval
+        uses: "GayathriNuthalapati/algolia-api/action-automatic-approvals@v1"
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          users: GayathriNuthalapati, Madhav547
+          approvers: 2
+ 
   deploydev:
     needs: build
     runs-on: ubuntu-latest
@@ -56,15 +66,18 @@ jobs:
         name: artifacts
     - name: Deploy to dev
       env:
-        USERNAME: ${{ secrets.anypoint_platform_username }}
-        PASSWORD: ${{ secrets.anypoint_platform_password }}
+        USERNAME: ${{ secrets.connected_app_client_id }}
+        PASSWORD: ${{ secrets.connected_app_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" 
+         -Danypoint.password="$PASSWORD" \
+         -Denv=dev \
+         -Dappname=algolia-123243
   deployqa:
+    if: github.ref == 'refs/heads/dev'
     needs: deploydev
     runs-on: ubuntu-latest
     steps:    
@@ -82,14 +95,17 @@ jobs:
         name: artifacts
     - name: Deploy to qa
       env:
-        USERNAME: ${{ secrets.anypoint_platform_username }}
-        PASSWORD: ${{ secrets.anypoint_platform_password }}
+        USERNAME: ${{ secrets.connected_app_client_id }}
+        PASSWORD: ${{ secrets.connected_app_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" 
+         -Danypoint.password="$PASSWORD" \
+         -Denv=qa \
+         -Dappname=algolia-123243-qa
+  
   deployprod:
     needs: deployqa
     runs-on: ubuntu-latest
@@ -108,12 +124,14 @@ jobs:
         name: artifacts
     - name: Deploy to prod
       env:
-        USERNAME: ${{ secrets.anypoint_platform_username }}
-        PASSWORD: ${{ secrets.anypoint_platform_password }}
+        USERNAME: ${{ secrets.connected_app_client_id }}
+        PASSWORD: ${{ secrets.connected_app_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" 
-
+         -Danypoint.password="$PASSWORD" \
+         -Denv=prod \
+         -Dappname=algolia-123243-prod
+   
