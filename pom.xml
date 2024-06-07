@@ -17,7 +17,6 @@
 		<anypoint.platform.client_secret>CF9F7b2eE82D4e29904e35D8255946f0</anypoint.platform.client_secret>
 
 
-
 	</properties>
 	<build>
 		<plugins>
