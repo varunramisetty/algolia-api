@@ -32,7 +32,7 @@ jobs:
           USERNAME: ${{ secrets.anypoint_platform_username }}
           PASSWORD: ${{ secrets.anypoint_platform_password }}
         run: |
-          mvn deploy:deploy-file -Denv=dev -Dfile=target/your-mule-app.jar
+          mvn deploy:deploy-file -Denv=dev -Dfile=target/project.jar
  
   deploy-qa:
     if: github.ref == 'refs/heads/main'
@@ -47,7 +47,7 @@ jobs:
           USERNAME: ${{ secrets.anypoint_platform_username }}
           PASSWORD: ${{ secrets.anypoint_platform_password }}
         run: |
-          mvn deploy:deploy-file -Denv=qa -Dfile=target/your-mule-app.jar
+          mvn deploy:deploy-file -Denv=qa -Dfile=target/project.jar
  
   deploy-prod:
     if: github.ref == 'refs/heads/main'
@@ -62,4 +62,4 @@ jobs:
           USERNAME: ${{ secrets.anypoint_platform_username }}
           PASSWORD: ${{ secrets.anypoint_platform_password }}
         run: |
-          mvn deploy:deploy-file -Denv=prod -Dfile=target/your-mule-app.jar
+          mvn deploy:deploy-file -Denv=prod -Dfile=target/project.jar
