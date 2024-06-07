@@ -65,6 +65,15 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=dev \
          -Dappname=algolia-123243
+  approve-qa:
+    needs: deploydev
+    runs-on: [ubuntu-latest,windows-latest]
+    steps:
+      - name: Await approval for QA deployment
+        uses: hema4421/auto-approve-action@v2.1.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          approval-comment: 'Please approve the deployment to QA.'
   deployqa:
     needs: deploydev
     runs-on: ubuntu-latest
@@ -93,6 +102,7 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=qa \
          -Dappname=algolia-123243-qa
+  
   deployprod:
     needs: deployqa
     runs-on: ubuntu-latest
@@ -111,8 +121,8 @@ jobs:
         name: artifacts
     - name: Deploy to prod
       env:
-        USERNAME: ${{ secrets.anypoint_platform_username }}
-        PASSWORD: ${{ secrets.anypoint_platform_password }}
+        USERNAME: ${{ secrets.connected_app_client_id }}
+        PASSWORD: ${{ secrets.connected_app_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
