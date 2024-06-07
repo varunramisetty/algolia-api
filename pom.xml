@@ -44,10 +44,10 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
-						<!--<username>AlgoliaProject</username>
-						<password>Algolia123</password>-->
-						<connectedAppClientId>e5f1cab2df6d443288335b0f022ce2fc</connectedAppClientId>
-						<connectedAppClientSecret>5266F45ff17b4C999f585ebF1Baff332</connectedAppClientSecret>
+						<!--<username>${anypoint.username}</username>
+						<password>${anypoint.password}</password>-->
+						<connectedAppClientId>${anypoint.username}</connectedAppClientId>
+						<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret>
 						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<applicationName>${appname}</applicationName>
 						<environment>${env}</environment>
