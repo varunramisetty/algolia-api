@@ -65,17 +65,8 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=dev \
          -Dappname=algolia-123243
-  approve-qa:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    needs: deploydev
-    runs-on: [ubuntu-latest,windows-latest]
-    steps:
-      - name: Await approval for QA deployment
-        uses: hema4421/auto-approve-action@v2.1.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          approval-comment: 'Please approve the deployment to QA.'
   deployqa:
+    if: github.ref == 'refs/heads/dev'
     needs: deploydev
     runs-on: ubuntu-latest
     steps:    
