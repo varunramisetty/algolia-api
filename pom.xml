@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>algolia-api123456</artifactId>
+	<artifactId>algolia-api1234</artifactId>
 	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
 
-	<name>algolia-api123456</name>
+	<name>algolia-api1234</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,8 +16,8 @@
 		<app.runtime>4.4.0-20230320</app.runtime>
 		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
 		
-		<anypoint.platform.client_id>75bfb70be7414a12a750162a6f790218</anypoint.platform.client_id>
-		<anypoint.platform.client_secret>fe93034E96CE40D0b1AE8Bcd6b8f1f82</anypoint.platform.client_secret>
+		<anypoint.platform.client_id>0558cf2627bc402caf554b6fb3794bc5</anypoint.platform.client_id>
+		<anypoint.platform.client_secret>CF9F7b2eE82D4e29904e35D8255946f0</anypoint.platform.client_secret>
 
 
 	</properties>
@@ -44,10 +44,13 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
-						<username>AlgoliaProject</username>
-						<password>Algolia123</password>
-						<applicationName>algolia-api123456</applicationName>
-						<environment>dev</environment>
+						<!--<username>AlgoliaProject</username>
+						<password>Algolia123</password>-->
+						<connectedAppClientId>e5f1cab2df6d443288335b0f022ce2fc</connectedAppClientId>
+						<connectedAppClientSecret>5266F45ff17b4C999f585ebF1Baff332</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+						<applicationName>${appname}</applicationName>
+						<environment>${env}</environment>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
 						<properties>
