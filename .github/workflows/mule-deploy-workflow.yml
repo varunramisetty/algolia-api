@@ -2,11 +2,6 @@ name: Reusable Workflow To Deploy MuleSoft Application
  
 on:
   workflow_call:
-    secrets:
-      username:
-        required: true
-      password:
-        required: true
 
 jobs:
   build:
@@ -59,8 +54,8 @@ jobs:
         name: artifacts
     - name: Deploy to dev
       env:
-        USERNAME: username
-        PASSWORD: password
+        USERNAME: ${{ secrets.connected_app_client_id }}
+        PASSWORD: ${{ secrets.connected_app_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
