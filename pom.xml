@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>algolia-api1234</artifactId>
+	<artifactId>algolia-api123456</artifactId>
 	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
 
-	<name>algolia-api1234</name>
+	<name>algolia-api123456</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -46,7 +46,7 @@
 						<muleVersion>4.4.0</muleVersion>
 						<username>AlgoliaProject</username>
 						<password>Algolia123</password>
-						<applicationName>algolia-api1234</applicationName>
+						<applicationName>algolia-api123456</applicationName>
 						<environment>${env}</environment>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
