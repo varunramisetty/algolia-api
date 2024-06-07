@@ -36,17 +36,7 @@ jobs:
       with:
           name: artifacts
           path: target/*.jar
-  approve-qa:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Await approval for all deployments
-        uses: Madhav547/auto-approve-action@v2.1.0
-        with:
-          github-token: ${{ secrets.TOKEN_GITHUB }}
-          users: GayathriNuthalapati, Madhav547
-          approvers: 2
-          approval-comment: 'Please approve the deployment to QA.'
+  
 
   deploydev:
     needs: build
@@ -76,6 +66,18 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=dev \
          -Dappname=algolia-123243
+  approve-qa:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Await approval for all deployments
+        uses: algolia-api/auto-approve-action@v2.1.0
+        with:
+          github-token: ${{ secrets.TOKEN_GITHUB }}
+          users: GayathriNuthalapati, Madhav547
+          approvers: 2
+          approval-comment: 'Please approve the deployment to QA.'
+         
   deployqa:
     if: github.ref == 'refs/heads/dev'
     needs: deploydev
