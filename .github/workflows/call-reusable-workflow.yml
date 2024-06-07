@@ -1,0 +1,13 @@
+name: Deploy MuleSoft Application
+ 
+on:
+  push:
+    branches:
+      - sample
+  pull_request:
+    branches:
+      - sample
+
+jobs:
+  call-workflow:
+    uses: .github/workflows/mule-deploy-workflow.yml@test
