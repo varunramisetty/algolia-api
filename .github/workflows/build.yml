@@ -65,8 +65,8 @@ jobs:
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
-         -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" \
+         -Danypoint.username=$USERNAME \
+         -Danypoint.password=$PASSWORD \
          -Denv=qa \
          -Dappname=algolia-123243-qaa
   
@@ -94,8 +94,8 @@ jobs:
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
-         -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" \
+         -Danypoint.username=$USERNAME \
+         -Danypoint.password=$PASSWORD \
          -Denv=prod \
          -Dappname=algolia-123243-prodd
    
