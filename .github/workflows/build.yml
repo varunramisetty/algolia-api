@@ -1,118 +1,65 @@
-name: Build and Deploy to sample
-
+name: Deploy MuleSoft Application
+ 
 on:
   push:
-    branches: [ sample ]
-  pull_request:
-    branches: [ sample ]
-    
+    branches:
+      - sample
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout this repo
-      uses: actions/checkout@v3
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'zulu'
-        java-version: 8
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-    - name: Stamp artifact file name with commit hash
-      run: |
-        artifactName1=$(ls target/*.jar | head -1)
-        commitHash=$(git rev-parse --short "$GITHUB_SHA")
-        artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
-        mv $artifactName1 $artifactName2
-    - name: Upload artifact 
-      uses: actions/upload-artifact@v3
-      with:
-          name: artifacts
-          path: target/*.jar
-        
-  deploydev:
+      - name: Checkout code
+        uses: actions/checkout@v2
+ 
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+ 
+      - name: Build project
+        run: mvn clean package
+ 
+  deploy-dev:
     needs: build
     runs-on: ubuntu-latest
-    steps:    
-    - name: Checkout this repo
-      uses: actions/checkout@v3
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
-    - uses: actions/download-artifact@v3
-      with:
-        name: artifacts
-    - name: Deploy to dev
-      env:
-        USERNAME: ${{ secrets.anypoint_platform_username }}
-        PASSWORD: ${{ secrets.anypoint_platform_password }}
-      run: |
-        artifactName=$(ls *.jar | head -1)
-        mvn deploy -DmuleDeploy \
-         -Dmule.artifact=$artifactName \
-         -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" 
-  deployqa:
-    needs: deploydev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+ 
+      - name: Deploy to Dev
+        env:
+          USERNAME: ${{ secrets.anypoint_platform_username }}
+          PASSWORD: ${{ secrets.anypoint_platform_password }}
+        run: |
+          mvn deploy:deploy-file -Denv=dev -Dfile=target/your-mule-app.jar
+ 
+  deploy-qa:
+    if: github.ref == 'refs/heads/main'
+    needs: deploy-dev
     runs-on: ubuntu-latest
-    steps:    
-    - name: Checkout this repo
-      uses: actions/checkout@v3
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
-    - uses: actions/download-artifact@v3
-      with:
-        name: artifacts
-    - name: Deploy to qa
-      env:
-        USERNAME: ${{ secrets.anypoint_platform_username }}
-        PASSWORD: ${{ secrets.anypoint_platform_password }}
-      run: |
-        artifactName=$(ls *.jar | head -1)
-        mvn deploy -DmuleDeploy \
-         -Dmule.artifact=$artifactName \
-         -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" 
-  deployprod:
-    needs: deployqa
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+ 
+      - name: Deploy to QA
+        env:
+          USERNAME: ${{ secrets.anypoint_platform_username }}
+          PASSWORD: ${{ secrets.anypoint_platform_password }}
+        run: |
+          mvn deploy:deploy-file -Denv=qa -Dfile=target/your-mule-app.jar
+ 
+  deploy-prod:
+    if: github.ref == 'refs/heads/main'
+    needs: deploy-qa
     runs-on: ubuntu-latest
-    steps:    
-    - name: Checkout this repo
-      uses: actions/checkout@v3
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
-    - uses: actions/download-artifact@v3
-      with:
-        name: artifacts
-    - name: Deploy to prod
-      env:
-        USERNAME: ${{ secrets.anypoint_platform_username }}
-        PASSWORD: ${{ secrets.anypoint_platform_password }}
-      run: |
-        artifactName=$(ls *.jar | head -1)
-        mvn deploy -DmuleDeploy \
-         -Dmule.artifact=$artifactName \
-         -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+ 
+      - name: Deploy to Production
+        env:
+          USERNAME: ${{ secrets.anypoint_platform_username }}
+          PASSWORD: ${{ secrets.anypoint_platform_password }}
+        run: |
+          mvn deploy:deploy-file -Denv=prod -Dfile=target/your-mule-app.jar
