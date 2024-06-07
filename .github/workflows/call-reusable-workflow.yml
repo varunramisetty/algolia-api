@@ -11,6 +11,4 @@ on:
 jobs:
   call-workflow:
     uses: GayathriNuthalapati/algolia-api/.github/workflows/mule-deploy-workflow.yml@test
-    secrets:
-      username: ${{ secrets.connected_app_client_id }}
-      password: ${{ secrets.connected_app_client_secret}}
+    secrets: inherit
