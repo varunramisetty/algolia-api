@@ -63,9 +63,10 @@ jobs:
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
-         -Denv=dev 
+         -Denv=dev \
+         -Dappname=algolia-123243
   deployqa:
-    needs: build
+    needs: deploydev
     runs-on: ubuntu-latest
     steps:    
     - name: Checkout this repo
@@ -90,9 +91,10 @@ jobs:
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
-         -Denv=qa
+         -Denv=qa \
+         -Dappname=algolia-123243-qa
   deployprod:
-    needs: build
+    needs: deployqa
     runs-on: ubuntu-latest
     steps:    
     - name: Checkout this repo
@@ -117,5 +119,6 @@ jobs:
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
-         -Denv=prod
+         -Denv=prod \
+         -Dappname=algolia-123243-prod
    
