@@ -42,7 +42,7 @@ jobs:
 
       steps:
       - name: Request approval
-        uses: "algolia-api/action-automatic-approvals@v1"
+        uses: "GayathriNuthalapati/algolia-api/action-automatic-approvals@v1"
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           users: GayathriNuthalapati, Madhav547
