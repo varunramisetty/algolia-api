@@ -40,7 +40,7 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
-						<!--<username>${anypoint.username}</username>
+						<!-- <username>${anypoint.username}</username>
 						<password>${anypoint.password}</password>-->
 						<connectedAppClientId>${anypoint.username}</connectedAppClientId>
 						<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret>
