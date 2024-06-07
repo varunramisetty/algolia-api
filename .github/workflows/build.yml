@@ -74,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Await approval for all deployments
-      - uses: algolia-api/auto-approve-action@v2.1.0
+        uses: algolia-api/auto-approve-action@v2.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           users: GayathriNuthalapati, Madhav547
