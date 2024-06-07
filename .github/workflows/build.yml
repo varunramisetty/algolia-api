@@ -40,9 +40,37 @@ jobs:
           name: artifacts
           path: target/*.jar
 
-  
-  deployqa:
+
+  deploydev:
     needs: build
+    runs-on: ubuntu-latest
+    steps:    
+    - name: Checkout this repo
+      uses: actions/checkout@v3
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - uses: actions/download-artifact@v3
+      with:
+        name: artifacts
+    - name: Deploy to dev
+      env:
+        USERNAME: ${{ secrets.connected_app_client_id }}
+        PASSWORD: ${{ secrets.connected_app_client_secret}}
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy -DmuleDeploy \
+         -Dmule.artifact=$artifactName \
+         -Danypoint.username="$USERNAME" \
+         -Danypoint.password="$PASSWORD" \
+         -Denv=dev \
+         -Dappname=algolia-123243
+  deployqa:
+    needs: deploydev
     runs-on: ubuntu-latest
     steps:    
     - name: Checkout this repo
@@ -65,10 +93,10 @@ jobs:
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
-         -Danypoint.username=$USERNAME \
-         -Danypoint.password=$PASSWORD \
+         -Danypoint.username="$USERNAME" \
+         -Danypoint.password="$PASSWORD" \
          -Denv=qa \
-         -Dappname=algolia-123243-qaa
+         -Dappname=algolia-123243-qa
   
   deployprod:
     needs: deployqa
@@ -94,8 +122,7 @@ jobs:
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
-         -Danypoint.username=$USERNAME \
-         -Danypoint.password=$PASSWORD \
+         -Danypoint.username="$USERNAME" \
+         -Danypoint.password="$PASSWORD" \
          -Denv=prod \
-         -Dappname=algolia-123243-prodd
-   
+         -Dappname=algolia-123243-prod
