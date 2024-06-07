@@ -54,8 +54,8 @@ jobs:
         name: artifacts
     - name: Deploy to dev
       env:
-        USERNAME: ${{ secrets.connected_app_client_id }}
-        PASSWORD: ${{ secrets.connected_app_client_secret}}
+        USERNAME: e5f1cab2df6d443288335b0f022ce2fc
+        PASSWORD: 5266F45ff17b4C999f585ebF1Baff332
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
