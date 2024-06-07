@@ -23,43 +23,86 @@ jobs:
   deploy-dev:
     needs: build
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
- 
-      - name: Deploy to Dev
-        env:
-          USERNAME: ${{ secrets.anypoint_platform_username }}
-          PASSWORD: ${{ secrets.anypoint_platform_password }}
-        run: |
-          mvn deploy:deploy-file -Denv=dev -Dfile=target/project.jar
- 
-  deploy-qa:
+    steps:    
+    - name: Checkout this repo
+      uses: actions/checkout@v3
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - uses: actions/download-artifact@v3
+      with:
+        name: artifacts
+    - name: Deploy to dev
+      env:
+        USERNAME: ${{ secrets.anypoint_platform_username }}
+        PASSWORD: ${{ secrets.anypoint_platform_password }}
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy -DmuleDeploy \
+         -Dmule.artifact=$artifactName \
+         -Danypoint.username="$USERNAME" \
+         -Danypoint.password="$PASSWORD" \
+         -Denv=dev 
+  deployqa:
     if: github.ref == 'refs/heads/main'
-    needs: deploy-dev
+    needs: [deploy-dev]
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
- 
-      - name: Deploy to QA
-        env:
-          USERNAME: ${{ secrets.anypoint_platform_username }}
-          PASSWORD: ${{ secrets.anypoint_platform_password }}
-        run: |
-          mvn deploy:deploy-file -Denv=qa -Dfile=target/project.jar
- 
+    steps:    
+    - name: Checkout this repo
+      uses: actions/checkout@v3
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - uses: algolia-api/manual-approval@v1
+      with:
+        secret: ${{ github.TOKEN }}
+        approvers: algolia-api
+    - name: Deploy to qa
+      env:
+        USERNAME: ${{ secrets.anypoint_platform_username }}
+        PASSWORD: ${{ secrets.anypoint_platform_password }}
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy -DmuleDeploy \
+         -Dmule.artifact=$artifactName \
+         -Danypoint.username="$USERNAME" \
+         -Danypoint.password="$PASSWORD" \
+         -Denv=qa
+  
   deploy-prod:
     if: github.ref == 'refs/heads/main'
-    needs: deploy-qa
+    needs: [deployqa]
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
- 
-      - name: Deploy to Production
-        env:
-          USERNAME: ${{ secrets.anypoint_platform_username }}
-          PASSWORD: ${{ secrets.anypoint_platform_password }}
-        run: |
-          mvn deploy:deploy-file -Denv=prod -Dfile=target/project.jar
+    steps:    
+    - name: Checkout this repo
+      uses: actions/checkout@v3
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - uses: algolia-api/manual-approval@v1
+      with:
+        secret: ${{ github.TOKEN }}
+        approvers: algolia-api
+    - name: Deploy to prod
+      env:
+        USERNAME: ${{ secrets.anypoint_platform_username }}
+        PASSWORD: ${{ secrets.anypoint_platform_password }}
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy -DmuleDeploy \
+         -Dmule.artifact=$artifactName \
+         -Danypoint.username="$USERNAME" \
+         -Danypoint.password="$PASSWORD" \
+         -Denv=prod
