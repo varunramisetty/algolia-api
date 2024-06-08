@@ -30,6 +30,22 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>4.4.0</muleVersion>
+						<!-- <username>${anypoint.username}</username>
+						<password>${anypoint.password}</password>-->
+						<connectedAppClientId>${anypoint.username}</connectedAppClientId>
+						<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+						<applicationName>${appname}</applicationName>
+						<environment>${env}</environment>
+						<workers>1</workers>
+						<workerType>MICRO</workerType>
+						<properties>
+							<key>value</key>
+						</properties>
+					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
 				</configuration>
 			</plugin>
