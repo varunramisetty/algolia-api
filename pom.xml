@@ -47,7 +47,7 @@
 						<workers>1</workers>						
 						<workerType>MICRO</workerType>
 						<properties>
-							<key>value</key>
+ 							<secure.key>${decryption.key}</secure.key>
 						</properties>
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
