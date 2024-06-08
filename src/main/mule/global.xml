@@ -24,6 +24,4 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
 	<secure-properties:config name="Secure_Properties_Config1" doc:name="Secure Properties Config" doc:id="5aeefcc8-c5ab-4c72-80fd-1d9ba4eb8cca" file="properties/${env}-config.yaml" key="${key}" >
 		<secure-properties:encrypt algorithm="Blowfish" />
 	</secure-properties:config>
-	<global-property doc:name="Global Property" doc:id="7248a8ae-8a52-4e38-8389-06994f24722f" name="env" value="dev" />
-	<global-property doc:name="Global Property" doc:id="bcf1a2e8-4871-415d-943f-402f08eaef67" name="key" value="mule" />
 </mule>
