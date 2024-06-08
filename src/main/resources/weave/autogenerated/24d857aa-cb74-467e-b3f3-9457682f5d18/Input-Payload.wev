@@ -1,4 +1,0 @@
-%dw 2.0
-
-type auto_24d857aa_cb74_467e_b3f3_9457682f5d18_Input_Payload = Array<{  Name__c?: String,   Pho_no__c?: Number,   Id: String,   Email__c?: String,   Address__c?: String,   _?: Any}>
-
