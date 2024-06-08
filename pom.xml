@@ -15,6 +15,9 @@
 
 		<app.runtime>4.4.0-20230123</app.runtime>
 		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
+		<anypoint.platform.client_id>${platform.client_id}</anypoint.platform.client_id>
+		<anypoint.platform.client_secret>${platform.client_secret}</anypoint.platform.client_secret>
+
 	</properties>
 
 	<build>
