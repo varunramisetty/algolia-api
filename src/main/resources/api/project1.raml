@@ -1,0 +1,63 @@
+#%RAML 1.0
+title: project1
+mediaType: application/json
+
+traits:
+  error: !include trait.raml
+
+uses: 
+  library: library.raml
+
+/product:
+  get:
+    is: library.error
+    queryParameters:
+      id:
+        type: number
+    responses:
+      200:
+        body:
+          application/json:
+            type: !include exchange_modules/4f8c199a-ff3b-4c4b-8663-b9619ef99280/datatype/1.0.0/dataType.raml
+            example: !include example.json
+  post:
+    is: library.error
+    body:
+      application/json:
+        example: !include example.json
+    responses:
+      201:
+        body:
+          application/json:
+            type: object
+            example: {
+              message: "Created"
+            }
+  put:
+    is: library.error
+    queryParameters:
+      id:
+        type: number
+    body:
+      application/json:
+        example: !include example.json
+    responses:
+      200:
+        body:
+          application/json:
+            type: string
+            example: "Updated"
+  delete:
+    is: library.error
+    queryParameters:
+      id:
+        type: number
+    responses:
+      200:
+        body:
+          application/json:
+            type: string
+            example: "Deleted"
+    
+
+        
