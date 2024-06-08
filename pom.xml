@@ -33,15 +33,15 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
-						<username>AlgoliaProject</username>
-						<password>Algolia123</password>
-						<applicationName>algolia-123-dev</applicationName>
-						<environment>dev</environment>
+						<username>${anypoint.username}</username>
+						<password>${anypoint.password}</password>
+						<applicationName>${appname}</applicationName>
+						<environment>${env}</environment>
 						<region>us-east-2</region>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
 						<properties>
-							<key>value</key>
+  							<secure.key>${decryption.key}</secure.key>
 						</properties>
 					</cloudHubDeployment>
 				</configuration>
