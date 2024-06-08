@@ -65,7 +65,7 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=dev \
          -Dappname=algolia-123243 \
-         -Ddecryption.key="$KEY"
+         -Dkey="$KEY"
          
   deployqa:
     needs: deploydev
@@ -96,7 +96,7 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=qa \
          -Dappname=algolia-123243-qa \
-         -Ddecryption.key="$KEY"
+         -Dkey="$KEY"
   
   deployprod:
     needs: deployqa
@@ -127,4 +127,4 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=prod \
          -Dappname=algolia-123243-prod \
-         -Ddecryption.key="$KEY"
+         -Dkey="$KEY"
