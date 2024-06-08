@@ -44,7 +44,7 @@
 						<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret>
 						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<applicationName>${appname}</applicationName>
-						<environment>${env}</environment>
+						<environment>${environment}</environment>
 						<region>us-east-2</region>
 						<workers>1</workers>						
 						<workerType>MICRO</workerType>
