@@ -64,7 +64,7 @@ jobs:
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
          -Denv=dev \
-         -Dappname=algolia-123243-g \
+         -Dappname=algolia-123-dev \
          -Ddecryption.key="$KEY"
          
   deployqa:
