@@ -1,0 +1,14 @@
+name: Deploy MuleSoft Application
+ 
+on:
+  push:
+    branches:
+      - sales
+  pull_request:
+    branches:
+      - sales
+
+jobs:
+  call-workflow:
+    uses: GayathriNuthalapati/algolia-api/.github/workflows/mule-deploy-workflow.yml@test
+    secrets: inherit
