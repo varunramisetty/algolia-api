@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway"
-	xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
-	xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+<mule xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
 	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway" xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
+	xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
 	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
 http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
 http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd
 http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
-	
-	<http:listener-config name="algolia-httpListenerConfig">
-        <http:listener-connection host="0.0.0.0" port="8081" />
+	 <http:listener-config name="algolia-httpListenerConfig">
+        <http:listener-connection host="0.0.0.0" port="8082" />
     </http:listener-config>
     <apikit:config name="algolia-config" api="algolia.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
-	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="ffb0181a-0b3c-43ea-85f6-3b47e6b6a958" >
+   
+	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="e2ed6af5-17fd-480a-bfb8-853ed0b3e847" >
 		<salesforce:basic-connection username="${secure::salesforce.username}" password="${secure::salesforce.password}" securityToken="${secure::salesforce.token}" />
 	</salesforce:sfdc-config>
-	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="d42fc4c1-231d-42a2-a864-92f9de79f614" file="properties\common-config.yaml" key="${key}" >
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="a9aa654c-82ec-4cbe-a380-22eca850ad56" file="properties\common-config.yaml" key="${key}" >
 		<secure-properties:encrypt algorithm="Blowfish" />
 	</secure-properties:config>
-	<secure-properties:config name="Secure_Properties_Config1" doc:name="Secure Properties Config" doc:id="0814a792-f068-45ce-9ed9-bd903253617b" file="properties/${env}-config.yaml" key="${key}" >
+	<secure-properties:config name="Secure_Properties_Config1" doc:name="Secure Properties Config" doc:id="5aeefcc8-c5ab-4c72-80fd-1d9ba4eb8cca" file="properties/${env}-config.yaml" key="${key}" >
 		<secure-properties:encrypt algorithm="Blowfish" />
 	</secure-properties:config>
-	<api-gateway:autodiscovery apiId="${secure::api.id}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="22262a4c-7b3f-4749-91f7-b82366b083cd" flowRef="algolia-main" />
-	
-	
+	<api-gateway:autodiscovery apiId="${secure::api.id}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="9515bb72-f26a-4be5-90cf-1e0159e92b6f" flowRef="algolia-main" />
+	<configuration-properties doc:name="Configuration properties" doc:id="46a1cd10-7a66-4cda-94ad-bbe1af2ab322" file="properties\${env}-config.yaml" />
+	<global-property doc:name="Global Property" doc:id="f0720077-97ef-4558-97fd-41331bdc3e43" name="key" value="mule" />
+	<global-property doc:name="Global Property" doc:id="501dc1bc-2f4f-4126-9d82-1b2db205dc47" name="env" value="dev" />
 </mule>
