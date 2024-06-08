@@ -3,7 +3,7 @@ name: Deploy MuleSoft Application
 on:
   push:
     branches:
-      - dem
+      - demo
   pull_request:
     branches:
       - demo
