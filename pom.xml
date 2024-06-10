@@ -37,9 +37,9 @@
 						<password>${anypoint.password}</password>
 						<applicationName>${appname}</applicationName>
 						<environment>${env}</environment>
-						<region>eu-west-1</region>
+						<region>us-east-2</region>
 						<workers>1</workers>
-						<workerType>SMALL</workerType>
+						<workerType>MICRO</workerType>
 						<deploymentTimeout>1000000</deploymentTimeout>
 						<properties>
   							<secure.key>${decryption.key}</secure.key>
@@ -51,11 +51,7 @@
 	</build>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.github.everit-org.json-schema</groupId>
-			<artifactId>org.everit.json.schema</artifactId>
-			<version>1.12.2</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-http-connector</artifactId>
