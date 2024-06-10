@@ -35,16 +35,16 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
-						<username>AlgoliaProject</username>
-						<password>Algolia123</password>
-						<applicationName>algolia-123-dev</applicationName>
-						<environment>dev</environment>
+						<username>${anypoint.username}</username>
+						<password>${anypoint.password}</password>
+						<applicationName>${appname}</applicationName>
+						<environment>${env}</environment>
 						<region>eu-west-1</region>
 						<workers>1</workers>
 						<workerType>SMALL</workerType>
 						<deploymentTimeout>1000000</deploymentTimeout>
 						<properties>
-							<key>value</key>
+							<key>${decryption.key}</key>
 						</properties>
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
