@@ -61,8 +61,8 @@ jobs:
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
-         -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" \
+         -Danypoint.username=AlgoliaProject \
+         -Danypoint.password=Algolia123 \
          -Denv=dev \
          -Dappname=algolia-123-dev \
          -Ddecryption.key="$KEY"
