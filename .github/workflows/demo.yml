@@ -8,6 +8,7 @@ on:
     branches:
       - demo
 
+
 jobs:
   call-workflow:
     uses: GayathriNuthalapati/algolia-api/.github/workflows/reusableWorkflow.yml@demo
