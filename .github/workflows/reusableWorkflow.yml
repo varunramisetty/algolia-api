@@ -65,7 +65,9 @@ jobs:
          -Danypoint.password=Algolia123 \
          -Denv=dev \
          -Dappname=algolia-123-dev \
-         -Ddecryption.key="$KEY"
+         -Ddecryption.key="$KEY" \
+         -Danypoint.platform.client_id= \
+         -Danypoint.platform.client_secret= 
          
   deployqa:
     needs: deploydev
