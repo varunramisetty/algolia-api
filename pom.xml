@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
@@ -7,13 +9,13 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
-	<name>autodiscovery</name>
+	<name>autodiscovery123</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.4.0-20230123</app.runtime>
+		<app.runtime>4.4.0</app.runtime>
 		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
 	</properties>
 
@@ -33,25 +35,32 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
-						<username>${anypoint.username}</username>
-						<password>${anypoint.password}</password>
-						<applicationName>${appname}</applicationName>
-						<environment>${env}</environment>
-						<region>us-east-2</region>
+						<username>AlgoliaProject</username>
+						<password>Algolia123</password>
+						<applicationName>algolia-123-dev</applicationName>
+						<environment>dev</environment>
+						<region>eu-west-1</region>
 						<workers>1</workers>
-						<workerType>MICRO</workerType>
+						<workerType>SMALL</workerType>
 						<deploymentTimeout>1000000</deploymentTimeout>
 						<properties>
-  							<secure.key>${decryption.key}</secure.key>
+							<key>value</key>
 						</properties>
 					</cloudHubDeployment>
+					<classifier>mule-application</classifier>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
 	<dependencies>
-		
+		<!-- https://mvnrepository.com/artifact/com.github.everit-org.json-schema/org.everit.json.schema -->
+		<dependency>
+			<groupId>com.github.everit-org.json-schema</groupId>
+			<artifactId>org.everit.json.schema</artifactId>
+			<version>1.12.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-http-connector</artifactId>
