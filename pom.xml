@@ -50,7 +50,7 @@
 						<connectedAppClientId>${anypoint.username}</connectedAppClientId> 
 						<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret> 
 						<connectedAppGrantType>client_credentials</connectedAppGrantType>
-						<applicationName>mvn-app-1</applicationName>
+						<applicationName>${appname}</applicationName>
 						<environment>${env}</environment>
 						<region>us-east-2</region>
 						<workers>1</workers>
