@@ -3,8 +3,6 @@ api:
 platform:
   client_id: "![S17BUxpDBvix6g64MP2ZGLUnCeA7unO56b/dTKbo6KX2MOvhMfBPWQ==]"
   client_secret: "![8mRhJqMvmgeAeUlZAbRuMYQy2siX6vo/VpAtEv7ZWEt1WbZBJ4PzIQ==]"
-  
-mule.env: "qa"
 
 salesforce:
   username: "![foKQrVSLEOjELQMJQyBlyhLg4YeStOrC7s3ShEPVyhc=]"
