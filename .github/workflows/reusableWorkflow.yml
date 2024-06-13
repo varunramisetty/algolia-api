@@ -54,12 +54,12 @@ jobs:
         name: artifacts
     - name: Deploy to dev
       env:
-        USERNAME: ${{ secrets.connected_app_client_id }}
+        USERNAME: ${{ secrets.connected_app_client_id}}
         PASSWORD: ${{ secrets.connected_app_client_secret}}
         KEY: ${{ secrets.key }}
         API_ID: ${{secrets.dev_api_id}}
-        PLATFORM_CLIENT_ID: ${{secrets.dev_client_id}}
-        PLATFORM_CLIENT_SECRET: ${{secrets.dev_client_secret}}
+        PLATFORM_CLIENT_ID: ${{secrets.org_client_id}}
+        PLATFORM_CLIENT_SECRET: ${{secrets.org_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
@@ -95,8 +95,8 @@ jobs:
         PASSWORD: ${{ secrets.connected_app_client_secret}}
         KEY: ${{ secrets.key }}
         API_ID: ${{secrets.dev_api_id}}
-        PLATFORM_CLIENT_ID: ${{secrets.qa_client_id}}
-        PLATFORM_CLIENT_SECRET: ${{secrets.qa_client_secret}}
+        PLATFORM_CLIENT_ID: ${{secrets.org_client_id}}
+        PLATFORM_CLIENT_SECRET: ${{secrets.org_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
@@ -132,8 +132,8 @@ jobs:
         PASSWORD: ${{ secrets.connected_app_client_secret}}
         KEY: ${{ secrets.key }}
         API_ID: ${{secrets.dev_api_id}}
-        PLATFORM_CLIENT_ID: ${{secrets.prod_client_id}}
-        PLATFORM_CLIENT_SECRET: ${{secrets.prod_client_secret}}
+        PLATFORM_CLIENT_ID: ${{secrets.org_client_id}}
+        PLATFORM_CLIENT_SECRET: ${{secrets.org_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
