@@ -63,8 +63,8 @@ jobs:
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
-         -Dkey="$KEY" \
-         -Denv=dev \
+         -Ddecryption.key="$KEY" \
+         -Dmule.env=dev \
          -Dappname=algolia-app-dev
          
   deployqa:
@@ -94,8 +94,8 @@ jobs:
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
-         -Dkey="$KEY" \
-         -Denv=qa \
+         -Ddecryption.key="$KEY" \
+         -Dmule.env=qa \
          -Dappname=algolia-app-qa
   
   deployprod:
@@ -125,7 +125,7 @@ jobs:
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
-         -Dkey="$KEY" \
-         -Denv=prod \
+         -Ddecryption.key="$KEY" \
+         -Dmule.env=prod \
          -Dappname=algolia-app-prod
          
