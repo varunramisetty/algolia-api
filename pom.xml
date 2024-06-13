@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
@@ -16,10 +18,15 @@
 		<app.runtime>4.4.0-20220622</app.runtime>
 		<mule.maven.plugin.version>3.6.3</mule.maven.plugin.version>
 
-		<secure.key>${key}</secure.key>
-		
-		<anypoint.platform.client_id>cd16e0b429404bf9af39670d12f65754</anypoint.platform.client_id>
-		<anypoint.platform.client_secret>8bC03b14aA5948d8b13813Af998B3cbF</anypoint.platform.client_secret>
+<!-- 		<mule.env>dev</mule.env> -->
+
+		<!-- <secure.mule.env>${mule.env}</secure.mule.env> <secure.mule.key>${mule.key}</secure.mule.key> -->
+
+		<!-- <runtime.manager.mule.env>${mule.env}</runtime.manager.mule.env> <runtime.manager.mule.key>${mule.key}</runtime.manager.mule.key> -->
+
+
+		<!-- <anypoint.platform.client_id>${platform.client_id}</anypoint.platform.client_id> 
+			<anypoint.platform.client_secret>${platform.client_secret}</anypoint.platform.client_secret> -->
 	</properties>
 
 	<build>
@@ -38,18 +45,18 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
-						<!-- <username>${anypoint.username}</username>
-						<password>${anypoint.password}</password>-->
-						<connectedAppClientId>${anypoint.username}</connectedAppClientId>
-						<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret>
-						<connectedAppGrantType>client_credentials</connectedAppGrantType>
-						<applicationName>${appname}</applicationName>
-						<environment>${env}</environment>
+						<username>${anypoint.username}</username>
+						<password>${anypoint.password}</password>
+						<!-- <connectedAppClientId>e5f1cab2df6d443288335b0f022ce2fc</connectedAppClientId> 
+							<connectedAppClientSecret>5266F45ff17b4C999f585ebF1Baff332</connectedAppClientSecret> 
+							<connectedAppGrantType>client_credentials</connectedAppGrantType> -->
+						<applicationName>mvn-app-222</applicationName>
+						<environment>dev</environment>
 						<region>us-east-2</region>
-						<workers>1</workers>						
+						<workers>1</workers>
 						<workerType>MICRO</workerType>
 						<properties>
- 							<key>${key}</key>
+							<secure.key>${decryption.key}</secure.key>
 						</properties>
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
