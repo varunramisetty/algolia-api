@@ -54,20 +54,22 @@ jobs:
         name: artifacts
     - name: Deploy to dev
       env:
-        USERNAME: ${{ secrets.anypoint_platform_username}}
-        PASSWORD: ${{ secrets.anypoint_platform_password}}
-        KEY: ${{ secrets.decryption_key }}
+        USERNAME: ${{ secrets.connected_app_client_id }}
+        PASSWORD: ${{ secrets.connected_app_client_secret}}
+        KEY: ${{ secrets.key }}
+        PLATFORM_CLIENT_ID: ${{secrets.dev_client_id}}
+        PLATFORM_CLIENT_SECRET: ${{secrets.dev_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
-         -Danypoint.username=AlgoliaProject \
-         -Danypoint.password=Algolia123 \
-         -Denv=dev \
-         -Dappname=algolia-123-dev \
+         -Danypoint.username="$USERNAME" \
+         -Danypoint.password="$PASSWORD" \
          -Ddecryption.key="$KEY" \
-         -Danypoint.platform.client_id= 0558cf2627bc402caf554b6fb3794bc5\
-         -Danypoint.platform.client_secret= CF9F7b2eE82D4e29904e35D8255946f0
+         -Denv=dev \
+         -Dappname=algolia-app-dev \
+         -Dplatform.client_id="$PLATFORM_CLIENT_ID" \
+         -Dplatform.client_secret="$PLATFORM_CLIENT_SECRET"
          
   deployqa:
     needs: deploydev
@@ -87,18 +89,22 @@ jobs:
         name: artifacts
     - name: Deploy to qa
       env:
-        USERNAME: ${{ secrets.anypoint_platform_username}}
-        PASSWORD: ${{ secrets.anypoint_platform_password}}
-        KEY: ${{ secrets.decryption_key }}
+        USERNAME: ${{ secrets.connected_app_client_id }}
+        PASSWORD: ${{ secrets.connected_app_client_secret}}
+        KEY: ${{ secrets.key }}
+        PLATFORM_CLIENT_ID: ${{secrets.qa_client_id}}
+        PLATFORM_CLIENT_SECRET: ${{secrets.qa_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
+         -Ddecryption.key="$KEY" \
          -Denv=qa \
-         -Dappname=algolia-123243-qa-g \
-         -Ddecryption.key="$KEY"
+         -Dappname=algolia-app-qa \
+         -Dplatform.client_id="$PLATFORM_CLIENT_ID" \
+         -Dplatform.client_secret="$PLATFORM_CLIENT_SECRET"
   
   deployprod:
     needs: deployqa
@@ -118,15 +124,20 @@ jobs:
         name: artifacts
     - name: Deploy to prod
       env:
-        USERNAME: ${{ secrets.anypoint_platform_username}}
-        PASSWORD: ${{ secrets.anypoint_platform_password}}
-        KEY: ${{ secrets.decryption_key }}
+        USERNAME: ${{ secrets.connected_app_client_id }}
+        PASSWORD: ${{ secrets.connected_app_client_secret}}
+        KEY: ${{ secrets.key }}
+        PLATFORM_CLIENT_ID: ${{secrets.prod_client_id}}
+        PLATFORM_CLIENT_SECRET: ${{secrets.prod_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
+         -Ddecryption.key="$KEY" \
          -Denv=prod \
-         -Dappname=algolia-123243-prod-g \
-         -Ddecryption.key="$KEY"
+         -Dappname=algolia-app-prod \
+         -Dplatform.client_id="$PLATFORM_CLIENT_ID" \
+         -Dplatform.client_secret="$PLATFORM_CLIENT_SECRET"
+         
