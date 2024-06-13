@@ -5,18 +5,28 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>autodiscovery</artifactId>
+	<artifactId>algolia</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
-	<name>autodiscovery123</name>
+	<name>algolia</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.4.0</app.runtime>
-		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
+		<app.runtime>4.4.0-20220622</app.runtime>
+		<mule.maven.plugin.version>3.6.3</mule.maven.plugin.version>
+
+		<!-- <mule.env>dev</mule.env> -->
+
+		<!-- <secure.mule.env>${mule.env}</secure.mule.env> <secure.mule.key>${mule.key}</secure.mule.key> -->
+
+		<!-- <runtime.manager.mule.env>${mule.env}</runtime.manager.mule.env> <runtime.manager.mule.key>${mule.key}</runtime.manager.mule.key> -->
+
+
+		<anypoint.platform.client_id>${platform.client_id}</anypoint.platform.client_id> 
+		<anypoint.platform.client_secret>${platform.client_secret}</anypoint.platform.client_secret>
 	</properties>
 
 	<build>
@@ -24,7 +34,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.2.0</version>
+				<version>3.0.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
@@ -35,16 +45,17 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
-						<username>${anypoint.username}</username>
-						<password>${anypoint.password}</password>
-						<applicationName>${appname}</applicationName>
-						<environment>${env}</environment>
-						<region>eu-west-1</region>
+						<!-- <username>${anypoint.username}</username> <password>${anypoint.password}</password> -->
+						<connectedAppClientId>e5f1cab2df6d443288335b0f022ce2fc</connectedAppClientId>
+						<connectedAppClientSecret>5266F45ff17b4C999f585ebF1Baff332</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+						<applicationName>mvn-app-555</applicationName>
+						<environment>dev</environment>
+						<region>us-east-2</region>
 						<workers>1</workers>
-						<workerType>SMALL</workerType>
-						<deploymentTimeout>1000000</deploymentTimeout>
+						<workerType>MICRO</workerType>
 						<properties>
-							<key>${decryption.key}</key>
+							<secure.key>${decryption.key}</secure.key>
 						</properties>
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
@@ -54,24 +65,28 @@
 	</build>
 
 	<dependencies>
-		
-
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-http-connector</artifactId>
-			<version>1.7.3</version>
+			<version>1.7.1</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-sockets-connector</artifactId>
-			<version>1.2.3</version>
+			<version>1.2.2</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-apikit-module</artifactId>
-			<version>1.8.1</version>
+			<version>1.6.1</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.connectors</groupId>
+			<artifactId>mule-salesforce-connector</artifactId>
+			<version>10.19.0</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
