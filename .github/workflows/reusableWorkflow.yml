@@ -94,7 +94,7 @@ jobs:
         USERNAME: ${{ secrets.connected_app_client_id }}
         PASSWORD: ${{ secrets.connected_app_client_secret}}
         KEY: ${{ secrets.key }}
-        API_ID: ${{secrets.dev_api_id}}
+        API_ID: ${{secrets.qa_api_id}}
         PLATFORM_CLIENT_ID: ${{secrets.qa_client_id}}
         PLATFORM_CLIENT_SECRET: ${{secrets.qa_client_secret}}
       run: |
@@ -131,7 +131,7 @@ jobs:
         USERNAME: ${{ secrets.connected_app_client_id }}
         PASSWORD: ${{ secrets.connected_app_client_secret}}
         KEY: ${{ secrets.key }}
-        API_ID: ${{secrets.dev_api_id}}
+        API_ID: ${{secrets.prod_api_id}}
         PLATFORM_CLIENT_ID: ${{secrets.prod_client_id}}
         PLATFORM_CLIENT_SECRET: ${{secrets.prod_client_secret}}
       run: |
