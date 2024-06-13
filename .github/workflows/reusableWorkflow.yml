@@ -64,7 +64,7 @@ jobs:
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
          -Ddecryption.key="$KEY" \
-         -Dmule.env=dev \
+         -Denv=dev \
          -Dappname=algolia-app-dev
          
   deployqa:
@@ -95,7 +95,7 @@ jobs:
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
          -Ddecryption.key="$KEY" \
-         -Dmule.env=qa \
+         -Denv=qa \
          -Dappname=algolia-app-qa
   
   deployprod:
@@ -126,6 +126,6 @@ jobs:
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
          -Ddecryption.key="$KEY" \
-         -Dmule.env=prod \
+         -Denv=prod \
          -Dappname=algolia-app-prod
          
