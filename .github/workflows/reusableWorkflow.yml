@@ -68,7 +68,7 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Ddecryption.key="$KEY" \
          -Denv=dev \
-         -Dappname=algolia-app-dev-111 \
+         -Dappname=algolia-app-dev-222 \
          -Dapi.id="$API_ID" \
          -Danypoint.platform.client_id="$PLATFORM_CLIENT_ID" \
          -Danypoint.platform.client_secret="$PLATFORM_CLIENT_SECRET"
@@ -105,7 +105,7 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Ddecryption.key="$KEY" \
          -Denv=qa \
-         -Dappname=algolia-app-qa-111 \
+         -Dappname=algolia-app-qa-222 \
          -Dapi.id="$API_ID" \
          -Danypoint.platform.client_id="$PLATFORM_CLIENT_ID" \
          -Danypoint.platform.client_secret="$PLATFORM_CLIENT_SECRET"
@@ -142,7 +142,7 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Ddecryption.key="$KEY" \
          -Denv=prod \
-         -Dappname=algolia-app-prod-111 \
+         -Dappname=algolia-app-prod-333 \
          -Dapi.id="$API_ID" \
          -Danypoint.platform.client_id="$PLATFORM_CLIENT_ID" \
          -Danypoint.platform.client_secret="$PLATFORM_CLIENT_SECRET"
