@@ -3,12 +3,13 @@ name: Deploy MuleSoft Application
 on:
   push:
     branches:
-      - sales
+      - prod
   pull_request:
     branches:
-      - sales
+      - prod
+
 
 jobs:
   call-workflow:
-    uses: GayathriNuthalapati/algolia-api/.github/workflows/mule-deploy-workflow.yml@test
+    uses: GayathriNuthalapati/algolia-api/.github/workflows/reusableWorkflow.yml@prod
     secrets: inherit
