@@ -57,6 +57,7 @@ jobs:
         USERNAME: ${{ secrets.connected_app_client_id }}
         PASSWORD: ${{ secrets.connected_app_client_secret}}
         KEY: ${{ secrets.key }}
+        API_ID: ${{secrets.dev_api_id}}
         PLATFORM_CLIENT_ID: ${{secrets.dev_client_id}}
         PLATFORM_CLIENT_SECRET: ${{secrets.dev_client_secret}}
       run: |
@@ -68,6 +69,7 @@ jobs:
          -Ddecryption.key="$KEY" \
          -Denv=dev \
          -Dappname=algolia-app-dev-111 \
+         -Dapi.id="$API_ID"
          -Dplatform.client_id="$PLATFORM_CLIENT_ID" \
          -Dplatform.client_secret="$PLATFORM_CLIENT_SECRET"
          
@@ -92,6 +94,7 @@ jobs:
         USERNAME: ${{ secrets.connected_app_client_id }}
         PASSWORD: ${{ secrets.connected_app_client_secret}}
         KEY: ${{ secrets.key }}
+        API_ID: ${{secrets.dev_api_id}}
         PLATFORM_CLIENT_ID: ${{secrets.qa_client_id}}
         PLATFORM_CLIENT_SECRET: ${{secrets.qa_client_secret}}
       run: |
@@ -103,6 +106,7 @@ jobs:
          -Ddecryption.key="$KEY" \
          -Denv=qa \
          -Dappname=algolia-app-qa-111 \
+         -Dapi.id="$API_ID"
          -Dplatform.client_id="$PLATFORM_CLIENT_ID" \
          -Dplatform.client_secret="$PLATFORM_CLIENT_SECRET"
   
@@ -127,6 +131,7 @@ jobs:
         USERNAME: ${{ secrets.connected_app_client_id }}
         PASSWORD: ${{ secrets.connected_app_client_secret}}
         KEY: ${{ secrets.key }}
+        API_ID: ${{secrets.dev_api_id}}
         PLATFORM_CLIENT_ID: ${{secrets.prod_client_id}}
         PLATFORM_CLIENT_SECRET: ${{secrets.prod_client_secret}}
       run: |
@@ -138,6 +143,7 @@ jobs:
          -Ddecryption.key="$KEY" \
          -Denv=prod \
          -Dappname=algolia-app-prod-111 \
+         -Dapi.id="$API_ID"
          -Dplatform.client_id="$PLATFORM_CLIENT_ID" \
          -Dplatform.client_secret="$PLATFORM_CLIENT_SECRET"
          
