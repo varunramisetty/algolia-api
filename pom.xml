@@ -25,8 +25,8 @@
 		<!-- <runtime.manager.mule.env>${mule.env}</runtime.manager.mule.env> <runtime.manager.mule.key>${mule.key}</runtime.manager.mule.key> -->
 
 
-		<anypoint.platform.client_id>${platform.client_id}</anypoint.platform.client_id> 
-		<anypoint.platform.client_secret>${platform.client_secret}</anypoint.platform.client_secret>
+		<!-- <anypoint.platform.client_id>${platform.client_id}</anypoint.platform.client_id> 
+		<anypoint.platform.client_secret>${platform.client_secret}</anypoint.platform.client_secret> -->
 	</properties>
 
 	<build>
@@ -46,16 +46,19 @@
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
 						<!-- <username>${anypoint.username}</username> <password>${anypoint.password}</password> -->
-						<connectedAppClientId>e5f1cab2df6d443288335b0f022ce2fc</connectedAppClientId>
-						<connectedAppClientSecret>5266F45ff17b4C999f585ebF1Baff332</connectedAppClientSecret>
+						<connectedAppClientId>${anypoint.username}</connectedAppClientId> 
+						<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret>
 						<connectedAppGrantType>client_credentials</connectedAppGrantType>
-						<applicationName>mvn-app-555</applicationName>
-						<environment>dev</environment>
+						<applicationName>${appname}</applicationName>
+						<environment>${env}</environment>
 						<region>us-east-2</region>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
 						<properties>
 							<secure.key>${decryption.key}</secure.key>
+							<api.id>${api.id}</api.id>
+							<anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id> 
+							<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret>
 						</properties>
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
