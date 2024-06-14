@@ -16,7 +16,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.4.0-20220622</app.runtime>
-		<mule.maven.plugin.version>3.6.3</mule.maven.plugin.version>
+		<mule.maven.plugin.version>3.7.1</mule.maven.plugin.version>
 
 		<!-- <mule.env>dev</mule.env> -->
 
@@ -45,28 +45,29 @@
 					<classifier>mule-application</classifier>
 					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>4.4.0</muleVersion>
 						<provider>MC</provider>
-						<environment>${env}</environment>
+						<environment>dev</environment>
 						<target>Cloudhub-US-East-2</target>
-						<username>${anypoint.username}</username>
-						<password>${anypoint.password}</password>
-						<!-- <connectedAppClientId>${anypoint.username}</connectedAppClientId>
+<!-- 						<server>Repository</server> -->
+						<!-- <username>AlgoliaProject</username>
+						<password>Algolia123</password>  -->
+						<connectedAppClientId>${anypoint.username}</connectedAppClientId>
 						<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret>
-						<connectedAppGrantType>client_credentials</connectedAppGrantType> -->
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<applicationName>${appname}</applicationName>
-						<releaseChannel>None</releaseChannel>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
-						<deploymentSettings>
+						<!-- <deploymentSettings>
 							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
-						</deploymentSettings>
+						</deploymentSettings> -->
 						<secureProperties>
-							<secure.key>${decryption.key}</secure.key>							
+							<secure.key>${decryption.key}</secure.key>
+							<!-- <anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret> -->
 						</secureProperties>
 						<properties>
 							<mule.env>${mule.env}</mule.env>
-							<!-- <anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret> -->
 						</properties>
 					</cloudhub2Deployment>
 				</configuration>
