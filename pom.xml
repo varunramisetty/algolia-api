@@ -4,19 +4,32 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+<<<<<<< Updated upstream
 	<groupId>com.mycompany</groupId>
 	<artifactId>algolia</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
 	<name>algolia</name>
+=======
+	<groupId>c105df25-e89b-4946-9fdf-6a4c5107c350</groupId>
+	<artifactId>algolia-sys-api</artifactId>
+	<version>1.0.3</version>
+	<packaging>mule-application</packaging>
+
+	<name>algolia-sys-api</name>
+>>>>>>> Stashed changes
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.4.0-20220622</app.runtime>
+<<<<<<< Updated upstream
 		<mule.maven.plugin.version>3.6.3</mule.maven.plugin.version>
+=======
+		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
+>>>>>>> Stashed changes
 
 		<!-- <mule.env>dev</mule.env> -->
 
@@ -24,9 +37,15 @@
 
 		<!-- <runtime.manager.mule.env>${mule.env}</runtime.manager.mule.env> <runtime.manager.mule.key>${mule.key}</runtime.manager.mule.key> -->
 
+<<<<<<< Updated upstream
 
 		<!-- <anypoint.platform.client_id>${platform.client_id}</anypoint.platform.client_id> 
 		<anypoint.platform.client_secret>${platform.client_secret}</anypoint.platform.client_secret> -->
+=======
+		<!-- <anypoint.platform.client_id>${platform.client_id}</anypoint.platform.client_id>
+		<anypoint.platform.client_secret>${platform.client_secret}</anypoint.platform.client_secret> -->
+		<munit.version>2.3.11</munit.version>
+>>>>>>> Stashed changes
 	</properties>
 
 	<build>
@@ -42,6 +61,7 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+<<<<<<< Updated upstream
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
@@ -63,16 +83,75 @@
 						</properties>
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
+=======
+					<cloudhub2Deployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<provider>MC</provider>
+						<environment>Sandbox</environment>
+						<target>Cloudhub-US-East-2</target>
+						<muleVersion>4.4.0</muleVersion>
+						<server>anypoint-exchange-v3</server>
+						<!-- <username>AlgoliaProject</username>
+						<password>Algolia123</password> -->
+						<applicationName>mvn-app-alg</applicationName>
+						<replicas>1</replicas>
+						<vCores>0.1</vCores>
+						<!-- <secureProperties>
+							<secure.key>${decryption.key}</secure.key>
+							<anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret>
+						</secureProperties>
+						<properties>
+							<mule.env>${mule.env}</mule.env>
+						</properties> -->
+					</cloudhub2Deployment>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.mulesoft.munit.tools</groupId>
+				<artifactId>munit-maven-plugin</artifactId>
+				<version>${munit.version}</version>
+				<executions>
+					<execution>
+						<id>test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+							<goal>coverage-report</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<coverage>
+						<runCoverage>true</runCoverage>
+						<formats>
+							<format>html</format>
+						</formats>
+					</coverage>
+>>>>>>> Stashed changes
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
+	<distributionManagement>
+		<repository>
+			<id>anypoint-exchange-v3</id>
+			<name>Corporate Repository</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/c105df25-e89b-4946-9fdf-6a4c5107c350/maven</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-http-connector</artifactId>
+<<<<<<< Updated upstream
 			<version>1.7.1</version>
+=======
+			<version>1.9.3</version>
+>>>>>>> Stashed changes
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
@@ -81,6 +160,13 @@
 			<version>1.2.2</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
+		<!-- <dependency>
+			<groupId>c105df25-e89b-4946-9fdf-6a4c5107c350</groupId>
+			<artifactId>algolia-api</artifactId>
+			<version>1.0.0</version>
+			<classifier>raml</classifier>
+			<type>zip</type>
+		</dependency> -->
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-apikit-module</artifactId>
@@ -88,15 +174,27 @@
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
+<<<<<<< Updated upstream
 			<groupId>com.mulesoft.connectors</groupId>
 			<artifactId>mule-salesforce-connector</artifactId>
 			<version>10.19.0</version>
+=======
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-objectstore-connector</artifactId>
+			<version>1.2.2</version>
+>>>>>>> Stashed changes
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
 			<groupId>com.mulesoft.modules</groupId>
 			<artifactId>mule-secure-configuration-property-module</artifactId>
 			<version>1.2.7</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.connectors</groupId>
+			<artifactId>mule-salesforce-connector</artifactId>
+			<version>10.20.3</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
