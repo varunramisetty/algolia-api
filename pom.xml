@@ -43,23 +43,21 @@
 					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>MC</provider>
-						<environment>Sandbox</environment>
+						<environment>${env}</environment>
 						<target>Cloudhub-US-East-2</target>
 						<muleVersion>4.4.0</muleVersion>
 						<server>anypoint-exchange-v3</server>
-						<!-- <username>AlgoliaProject</username>
-						<password>Algolia123</password> -->
-						<applicationName>mvn-app-alg</applicationName>
+						<applicationName>${appname}</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
-						<!-- <secureProperties>
+						<secureProperties>
 							<secure.key>${decryption.key}</secure.key>
 							<anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
 							<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret>
 						</secureProperties>
 						<properties>
 							<mule.env>${mule.env}</mule.env>
-						</properties> -->
+						</properties> 
 					</cloudhub2Deployment>
 				</configuration>
 			</plugin>
