@@ -48,9 +48,11 @@
 						<provider>MC</provider>
 						<environment>${env}</environment>
 						<target>Cloudhub-US-East-2</target>
-						<connectedAppClientId>${anypoint.username}</connectedAppClientId>
+						<username>${anypoint.username}</username>
+						<password>${anypoint.password}</password>
+						<!-- <connectedAppClientId>${anypoint.username}</connectedAppClientId>
 						<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret>
-						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType> -->
 						<applicationName>${appname}</applicationName>
 						<releaseChannel>None</releaseChannel>
 						<replicas>1</replicas>
