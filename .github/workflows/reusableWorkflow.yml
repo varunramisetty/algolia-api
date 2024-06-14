@@ -75,7 +75,7 @@ jobs:
         -Ddecryption.key="${{ secrets.key }}" \
         -Dmule.env=qa \
         -Denv=qa \
-        -Dappname=algolia-app-dev-ch2 \
+        -Dappname=algolia-app-qa-ch2 \
         -Danypoint.platform.client_id="${{secrets.org_client_id}}" \
         -Danypoint.platform.client_secret="${{secrets.org_client_secret}}"
   
@@ -100,7 +100,7 @@ jobs:
         -Ddecryption.key="${{ secrets.key }}" \
         -Dmule.env=prod \
         -Denv=prod \
-        -Dappname=algolia-app-dev-ch2 \
+        -Dappname=algolia-app-prod-ch2 \
         -Danypoint.platform.client_id="${{secrets.org_client_id}}" \
         -Danypoint.platform.client_secret="${{secrets.org_client_secret}}"
          
