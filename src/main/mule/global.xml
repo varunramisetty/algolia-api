@@ -22,9 +22,9 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="9a03ac96-d862-4b9d-aaeb-60e0c7f11a37" file="properties/${mule.env}-config.yaml" key="${secure.key}" >
 		<secure-properties:encrypt algorithm="Blowfish" />
 	</secure-properties:config>
-	<global-property doc:name="Global Property" doc:id="4f4460a0-d02a-4a80-957c-7909be202022" name="mule.env" value="dev" />
+	<!-- <global-property doc:name="Global Property" doc:id="4f4460a0-d02a-4a80-957c-7909be202022" name="mule.env" value="dev" />
 	<global-property doc:name="Global Property" doc:id="39e3aa32-b6ed-4877-b02a-4ec0eb0ebda1" name="secure.key" value="mule" />
-	<api-gateway:autodiscovery apiId="${secure::api.id}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="89cf9239-bf6d-4ba2-a47f-fe71e2982c6a" flowRef="algolia-main" />
+	<api-gateway:autodiscovery apiId="${secure::api.id}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="89cf9239-bf6d-4ba2-a47f-fe71e2982c6a" flowRef="algolia-main" /> -->
 	<error-handler name="globalError_Handler" doc:id="7e31a9b4-6e57-4249-a936-1cc33dcc4d87" >
 		<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="9a203d15-1f52-4b84-8fc7-af04aed7c960" type="ANY">
 			<ee:transform doc:name="Transform Message" doc:id="ecd72faf-bb9a-466b-92b6-63cf548a89e1" >
