@@ -66,7 +66,7 @@ jobs:
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
-         -Ddecryption.key="$KEY" \
+         -Ddecryption.key="${{ secrets.key }}" \
          -Dmule.env=dev \
          -Denv=dev \
          -Dappname=algolia-app-dev-111 \
