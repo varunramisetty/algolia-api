@@ -3,8 +3,6 @@ api:
 platform:
   client_id: "![uavU1RDB0/7IyBKQPSQ5+LbY0IyohqlhB9TPhLqh8AbcqHKLIubryw==]"
   client_secret: "![e1wNr0JBrjBqh59yjACbWKzTMFVOELpGqexe24qryHKnqrqaE59bxQ==]"
-  
-mule.env: "prod"
 
 salesforce:
   username: "![foKQrVSLEOjELQMJQyBlyhLg4YeStOrC7s3ShEPVyhc=]"
