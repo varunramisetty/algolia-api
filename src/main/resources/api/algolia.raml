@@ -1,0 +1,46 @@
+#%RAML 1.0
+title: algolia
+
+traits:
+  error : !include traits/Error.raml
+
+uses:
+  lib : libraries/library.raml
+
+/algolia:
+  get:
+    description : Admin will get all the records
+    displayName : Data Retrieving
+    responses: 
+      200:
+        description : Success response
+        body:
+          application/json:
+            example : [{
+                        "Name__c": "Indrajith",
+                        "Pho_no__c":6541981577,
+                        "Email__c":"xyz@gmail.com",
+                        "Address__c":"Karimnagar"        
+                      }]
+    is : error
+
+  post:
+    description: Data Inserted
+    displayName: Insertion
+    body:
+      application/json:
+        example: [{
+  "Name__c": "Indrajith",
+  "Pho_no__c":6541981577,
+  "Email__c":"xyz@gmail.com",
+  "Address__c":"Karimnagar"        
+}]
+    responses : 
+      201:
+        description : Success response
+        body:
+          application/json:
+            type: string
+            example : "Successfully inserted"
+    is : error
+
