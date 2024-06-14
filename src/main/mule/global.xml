@@ -22,9 +22,6 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="9a03ac96-d862-4b9d-aaeb-60e0c7f11a37" file="properties/${mule.env}-config.yaml" key="${secure.key}" >
 		<secure-properties:encrypt algorithm="Blowfish" />
 	</secure-properties:config>
-<<<<<<< Updated upstream
-	<api-gateway:autodiscovery apiId="${secure::api.id}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="1b6bbfd2-dd5e-471d-b32c-6fc9e3ce3ed0" flowRef="algolia-main" />
-=======
 	<global-property doc:name="Global Property" doc:id="1a90c8d6-28d8-4416-a62d-23751d1128af" name="mule.env" value="dev" />
 	<global-property doc:name="Global Property" doc:id="e0e05fc1-52c0-4ff8-a337-ef30f44c1ae3" name="secure.key" value="mule" />
 	<error-handler name="globalError_Handler" doc:id="7e31a9b4-6e57-4249-a936-1cc33dcc4d87" >
@@ -119,7 +116,6 @@ output application/json
                 </ee:transform>
             </on-error-propagate>
 	</error-handler>
->>>>>>> Stashed changes
 	
 	
 </mule>
