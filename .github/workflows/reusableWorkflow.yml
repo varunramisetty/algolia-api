@@ -54,12 +54,11 @@ jobs:
         name: artifacts
     - name: Deploy to dev
       env:
-        USERNAME: ${{ secrets.connected_app_client_id }}
+        USERNAME: ${{ secrets.connected_app_client_id}}
         PASSWORD: ${{ secrets.connected_app_client_secret}}
         KEY: ${{ secrets.key }}
-        API_ID: ${{secrets.dev_api_id}}
-        PLATFORM_CLIENT_ID: ${{secrets.dev_client_id}}
-        PLATFORM_CLIENT_SECRET: ${{secrets.dev_client_secret}}
+        PLATFORM_CLIENT_ID: ${{secrets.org_client_id}}
+        PLATFORM_CLIENT_SECRET: ${{secrets.org_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
@@ -67,9 +66,9 @@ jobs:
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
          -Ddecryption.key="$KEY" \
+         -Dmule.env=dev \
          -Denv=dev \
-         -Dappname=algolia-app-dev-222 \
-         -Dapi.id="$API_ID" \
+         -Dappname=algolia-app-dev-111 \
          -Danypoint.platform.client_id="$PLATFORM_CLIENT_ID" \
          -Danypoint.platform.client_secret="$PLATFORM_CLIENT_SECRET"
          
@@ -94,9 +93,8 @@ jobs:
         USERNAME: ${{ secrets.connected_app_client_id }}
         PASSWORD: ${{ secrets.connected_app_client_secret}}
         KEY: ${{ secrets.key }}
-        API_ID: ${{secrets.qa_api_id}}
-        PLATFORM_CLIENT_ID: ${{secrets.qa_client_id}}
-        PLATFORM_CLIENT_SECRET: ${{secrets.qa_client_secret}}
+        PLATFORM_CLIENT_ID: ${{secrets.org_client_id}}
+        PLATFORM_CLIENT_SECRET: ${{secrets.org_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
@@ -104,9 +102,9 @@ jobs:
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
          -Ddecryption.key="$KEY" \
+         -Dmule.env=qa \
          -Denv=qa \
-         -Dappname=algolia-app-qa-222 \
-         -Dapi.id="$API_ID" \
+         -Dappname=algolia-app-qa-111 \
          -Danypoint.platform.client_id="$PLATFORM_CLIENT_ID" \
          -Danypoint.platform.client_secret="$PLATFORM_CLIENT_SECRET"
   
@@ -131,9 +129,8 @@ jobs:
         USERNAME: ${{ secrets.connected_app_client_id }}
         PASSWORD: ${{ secrets.connected_app_client_secret}}
         KEY: ${{ secrets.key }}
-        API_ID: ${{secrets.prod_api_id}}
-        PLATFORM_CLIENT_ID: ${{secrets.prod_client_id}}
-        PLATFORM_CLIENT_SECRET: ${{secrets.prod_client_secret}}
+        PLATFORM_CLIENT_ID: ${{secrets.org_client_id}}
+        PLATFORM_CLIENT_SECRET: ${{secrets.org_client_secret}}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
@@ -141,9 +138,9 @@ jobs:
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
          -Ddecryption.key="$KEY" \
+         -Dmule.env=prod \
          -Denv=prod \
-         -Dappname=algolia-app-prod-333 \
-         -Dapi.id="$API_ID" \
+         -Dappname=algolia-app-prod-555 \
          -Danypoint.platform.client_id="$PLATFORM_CLIENT_ID" \
          -Danypoint.platform.client_secret="$PLATFORM_CLIENT_SECRET"
          
