@@ -24,9 +24,9 @@
 
 		<!-- <runtime.manager.mule.env>${mule.env}</runtime.manager.mule.env> <runtime.manager.mule.key>${mule.key}</runtime.manager.mule.key> -->
 
-
-		<!-- <anypoint.platform.client_id>${platform.client_id}</anypoint.platform.client_id> 
-		<anypoint.platform.client_secret>${platform.client_secret}</anypoint.platform.client_secret> -->
+		<anypoint.platform.client_id>${platform.client_id}</anypoint.platform.client_id>
+		<anypoint.platform.client_secret>${platform.client_secret}</anypoint.platform.client_secret>
+		<munit.version>2.3.11</munit.version>
 	</properties>
 
 	<build>
@@ -42,32 +42,55 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-                    			<classifier>mule-application</classifier>
-                    			<cloudhub2Deployment>
-                        		<uri>https://anypoint.mulesoft.com</uri>
-                        		<provider>MC</provider>
-                        		<environment>${env}</environment>
-                        		<target>Cloudhub-US-East-2</target>
-                        		<connectedAppClientId>${anypoint.username}</connectedAppClientId> 
-					<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret>
-					<connectedAppGrantType>client_credentials</connectedAppGrantType>
-                        		<applicationName>${appname}</applicationName>
-					<releaseChannel>None</releaseChannel>
-                        		<replicas>1</replicas>
-                        		<vCores>0.1</vCores>
-                        		<deploymentSettings>
-                            			<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
-                        		</deploymentSettings>
-					<secureProperties>
-						<secure.key>${decryption.key}</secure.key>
-						<anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id> 
-						<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret>
-					</secureProperties>
-					<properties>
-						<mule.env>${mule.env}</mule.env>							
-					</properties>
-                  		  </cloudhub2Deployment>
-                		</configuration>
+					<classifier>mule-application</classifier>
+					<cloudhub2Deployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<provider>MC</provider>
+						<environment>${env}</environment>
+						<target>Cloudhub-US-East-2</target>
+						<connectedAppClientId>${anypoint.username}</connectedAppClientId>
+						<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+						<applicationName>${appname}</applicationName>
+						<releaseChannel>None</releaseChannel>
+						<replicas>1</replicas>
+						<vCores>0.1</vCores>
+						<deploymentSettings>
+							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
+						</deploymentSettings>
+						<secureProperties>
+							<secure.key>${decryption.key}</secure.key>
+							<anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret>
+						</secureProperties>
+						<properties>
+							<mule.env>${mule.env}</mule.env>
+						</properties>
+					</cloudhub2Deployment>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.mulesoft.munit.tools</groupId>
+				<artifactId>munit-maven-plugin</artifactId>
+				<version>${munit.version}</version>
+				<executions>
+					<execution>
+						<id>test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+							<goal>coverage-report</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<coverage>
+						<runCoverage>true</runCoverage>
+						<formats>
+							<format>html</format>
+						</formats>
+					</coverage>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -102,6 +125,26 @@
 			<artifactId>mule-secure-configuration-property-module</artifactId>
 			<version>1.2.7</version>
 			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-runner</artifactId>
+			<version>2.3.11</version>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-tools</artifactId>
+			<version>2.3.11</version>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.weave</groupId>
+			<artifactId>assertions</artifactId>
+			<version>1.0.2</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
