@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>b5d4f67f-734f-43e9-97b5-1e94327cc433</groupId>
-	<artifactId>algolia</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<groupId>c105df25-e89b-4946-9fdf-6a4c5107c350</groupId>
+	<artifactId>algolia-sys-api</artifactId>
+	<version>1.0.1</version>
 	<packaging>mule-application</packaging>
 
-	<name>algolia</name>
+	<name>algolia-sys-api</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,7 +23,7 @@
 		<!-- <runtime.manager.mule.env>${mule.env}</runtime.manager.mule.env> <runtime.manager.mule.key>${mule.key}</runtime.manager.mule.key> -->
 
 		<!-- <anypoint.platform.client_id>${platform.client_id}</anypoint.platform.client_id>
-		<anypoint.platform.client_secret>${platform.client_secret}</anypoint.platform.client_secret>  -->
+		<anypoint.platform.client_secret>${platform.client_secret}</anypoint.platform.client_secret> -->
 		<munit.version>2.3.11</munit.version>
 	</properties>
 
@@ -42,33 +40,26 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<classifier>mule-application</classifier>
 					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
-						<muleVersion>4.4.0</muleVersion>
 						<provider>MC</provider>
-						<environment>dev</environment>
+						<environment>Sandbox</environment>
 						<target>Cloudhub-US-East-2</target>
-<!-- 						<server>Repository</server> -->
+						<muleVersion>4.4.0</muleVersion>
+						<server>anypoint-exchange-v3</server>
 						<!-- <username>AlgoliaProject</username>
-						<password>Algolia123</password>  -->
-						<connectedAppClientId>${anypoint.username}</connectedAppClientId>
-						<connectedAppClientSecret>${anypoint.password}</connectedAppClientSecret>
-						<connectedAppGrantType>client_credentials</connectedAppGrantType>
-						<applicationName>${appname}</applicationName>
+						<password>Algolia123</password> -->
+						<applicationName>mvn-app-alg</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
-						<!-- <deploymentSettings>
-							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
-						</deploymentSettings> -->
-						<secureProperties>
+						<!-- <secureProperties>
 							<secure.key>${decryption.key}</secure.key>
-							<!-- <anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret> -->
+							<anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret>
 						</secureProperties>
 						<properties>
 							<mule.env>${mule.env}</mule.env>
-						</properties>
+						</properties> -->
 					</cloudhub2Deployment>
 				</configuration>
 			</plugin>
@@ -97,6 +88,15 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>anypoint-exchange-v3</id>
+			<name>Corporate Repository</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/c105df25-e89b-4946-9fdf-6a4c5107c350/maven</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
 
 	<dependencies>
 		<dependency>
@@ -149,6 +149,13 @@
 			<version>1.0.2</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>c105df25-e89b-4946-9fdf-6a4c5107c350</groupId>
+			<artifactId>algolia-api</artifactId>
+			<version>1.0.0</version>
+			<classifier>raml</classifier>
+			<type>zip</type>
+		</dependency>
 	</dependencies>
 
 	<repositories>
@@ -164,22 +171,7 @@
 			<url>https://repository.mulesoft.org/releases/</url>
 			<layout>default</layout>
 		</repository>
-		<!-- <repository>
-            <id>anypoint-exchange-v3</id>
-            <name>Private Exchange repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/c105df25-e89b-4946-9fdf-6a4c5107c350/maven</url>
-            <layout>default</layout>
-        </repository> -->
 	</repositories>
-	
-	<distributionManagement>
-        <repository>
-            <id>anypoint-exchange-v3</id>
-            <name>Corporate Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/b5d4f67f-734f-43e9-97b5-1e94327cc433/maven</url>
-            <layout>default</layout>
-        </repository>
-    </distributionManagement>
 
 	<pluginRepositories>
 		<pluginRepository>
