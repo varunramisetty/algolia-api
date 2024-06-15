@@ -51,7 +51,7 @@
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
 						<secureProperties>
-							<secure.key>${decryption.key}</secure.key>
+							<secure.key>${secure.key}</secure.key>
 							<anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
 							<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret>
 						</secureProperties>
