@@ -4,7 +4,7 @@
 
 	<groupId>c105df25-e89b-4946-9fdf-6a4c5107c350</groupId>
 	<artifactId>algolia-sys-api</artifactId>
-	<version>1.0.8</version>
+	<version>1.0.9</version>
 	<packaging>mule-application</packaging>
 
 	<name>algolia-sys-api</name>
