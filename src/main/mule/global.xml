@@ -22,8 +22,6 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="9a03ac96-d862-4b9d-aaeb-60e0c7f11a37" file="properties/${mule.env}-config.yaml" key="${secure.key}" >
 		<secure-properties:encrypt algorithm="Blowfish" />
 	</secure-properties:config>
-	<global-property doc:name="Global Property" doc:id="1a90c8d6-28d8-4416-a62d-23751d1128af" name="mule.env" value="dev" />
-	<global-property doc:name="Global Property" doc:id="e0e05fc1-52c0-4ff8-a337-ef30f44c1ae3" name="secure.key" value="mule" />
 	<error-handler name="globalError_Handler" doc:id="7e31a9b4-6e57-4249-a936-1cc33dcc4d87" >
 		<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="9a203d15-1f52-4b84-8fc7-af04aed7c960" type="ANY">
 			<ee:transform doc:name="Transform Message" doc:id="ecd72faf-bb9a-466b-92b6-63cf548a89e1" >
