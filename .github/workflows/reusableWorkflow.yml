@@ -48,7 +48,7 @@ jobs:
         mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
         -Dclient.id="${{ secrets.CONNECTED_APP_CLIENT_ID }}" \
         -Dclient.secret="${{ secrets.CONNECTED_APP_CLIENT_SECRET }}" \
-        -Dsecure.key="${{ secrets.securekey }}" \
+        -Ddecryption.key="${{ secrets.securekey }}" \
         -Dmule.env=dev \
         -Denv=dev \
         -Dappname=algolia-app-dev-ch2 \
@@ -74,7 +74,7 @@ jobs:
         mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
         -Dclient.id="${{ secrets.CONNECTED_APP_CLIENT_ID }}" \
         -Dclient.secret="${{ secrets.CONNECTED_APP_CLIENT_SECRET }}" \
-        -Dsecure.key="${{ secrets.securekey }}" \
+        -Ddecryption.key="${{ secrets.securekey }}" \
         -Dmule.env=qa \
         -Denv=qa \
         -Dappname=algolia-app-qa-ch2 \
@@ -100,7 +100,7 @@ jobs:
         mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
         -Dclient.id="${{ secrets.CONNECTED_APP_CLIENT_ID }}" \
         -Dclient.secret="${{ secrets.CONNECTED_APP_CLIENT_SECRET }}" \
-        -Dsecure.key="${{ secrets.securekey }}" \
+        -Ddecryption.key="${{ secrets.securekey }}" \
         -Dmule.env=prod \
         -Denv=prod \
         -Dappname=algolia-app-prod-ch2 \
