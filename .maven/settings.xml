@@ -3,16 +3,7 @@
     <pluginGroups>
         <pluginGroup>org.mule.tools</pluginGroup>
     </pluginGroups>
-    <servers>
-        <!-- connected app's required scopes: https://help.salesforce.com/s/articleView?id=001119708&type=1 -->
-        <server>
-            <id>anypoint-exchange-v3</id>
-            <!-- make sure this matches the serverId property in pom.xml -->
-            <username>~~~Client~~~</username>
-            <password>${client.id}~?~${client.secret}</password>
-            <!-- these come from the build.yml and your github secrets -->
-    
-        </server>
+
         <server>
             <id>MuleRepository</id>
             <username>${nexus_username}</username>
