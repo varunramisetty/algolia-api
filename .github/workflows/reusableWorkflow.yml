@@ -25,7 +25,7 @@ jobs:
       env:
         nexus_username: ${{ secrets.nexus_username }}
         nexus_password: ${{ secrets.nexus_password }}
-        KEY: ${{ secrets.decryption_key }}
+        KEY: ${{ secrets.key }}
       run: mvn test --settings .maven/settings.xml -Dsecure.key="$KEY" -Dmule.env=dev
     - name: Upload MUnit reports
       uses: actions/upload-artifact@v3
