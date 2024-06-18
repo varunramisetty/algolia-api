@@ -1,0 +1,36 @@
+{
+  "configs": [
+    "global.xml",
+    "query-implementation.xml",
+    "algolia-api.xml"
+  ],
+  "secureProperties": [],
+  "supportedJavaVersions": [],
+  "redeploymentEnabled": true,
+  "name": "c105df25-e89b-4946-9fdf-6a4c5107c350:algolia-sys-api:1.0.10",
+  "minMuleVersion": "4.4.0",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedPackages": [],
+      "exportedResources": [
+        "algolia-api.xml",
+        "api/algolia-api.raml",
+        "api/traits/errorTrait.raml",
+        "application-types.xml",
+        "global.xml",
+        "log4j2.xml",
+        "properties/dev-config.yaml",
+        "properties/prod-config.yaml",
+        "properties/qa-config.yaml",
+        "query-implementation-test-suite.xml",
+        "query-implementation.xml"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}

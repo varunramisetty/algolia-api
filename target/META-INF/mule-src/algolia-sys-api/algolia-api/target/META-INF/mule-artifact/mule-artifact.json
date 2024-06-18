@@ -1,0 +1,36 @@
+{
+  "configs": [
+    "algolia.xml",
+    "global.xml",
+    "query-implementation.xml"
+  ],
+  "secureProperties": [],
+  "supportedJavaVersions": [],
+  "redeploymentEnabled": true,
+  "name": "com.mycompany:salesforceusingraml:1.0.0-SNAPSHOT",
+  "minMuleVersion": "4.5.0",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedPackages": [],
+      "exportedResources": [
+        "algolia.xml",
+        "api/algolia.raml",
+        "api/libraries/library.raml",
+        "api/traits/Error.raml",
+        "application-types.xml",
+        "global.xml",
+        "log4j2.xml",
+        "properties/dev-config.yaml",
+        "properties/prod-config.yaml",
+        "properties/qa-config.yaml",
+        "query-implementation.xml"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}

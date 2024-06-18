@@ -1,0 +1,109 @@
+name: Reusable Workflow To Deploy MuleSoft Application
+ 
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v4
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v4
+        with:
+          distribution: "zulu"
+          java-version: 8
+      - name: Publish to Exchange
+        run: |
+          mvn deploy --settings .maven/settings.xml -DskipMunitTests \
+          -Dclient.id="${{ secrets.CONNECTED_APP_CLIENT_ID }}" \
+          -Dclient.secret="${{ secrets.CONNECTED_APP_CLIENT_SECRET }}"
+
+
+  deploydev:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:    
+    - name: Checkout this repo
+      uses: actions/checkout@v4
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-       
+    - name: Deploy to dev
+      run: |
+        mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
+        -Dclient.id="${{ secrets.CONNECTED_APP_CLIENT_ID }}" \
+        -Dclient.secret="${{ secrets.CONNECTED_APP_CLIENT_SECRET }}" \
+        -Ddecryption.key="${{ secrets.securekey }}" \
+        -Dmule.env=dev \
+        -Denv=dev \
+        -Dappname=algolia-app-dev-ch2 \
+        -Danypoint.platform.client_id="${{secrets.org_client_id}}" \
+        -Danypoint.platform.client_secret="${{secrets.org_client_secret}}"
+         
+  deployqa:
+    needs: deploydev
+    runs-on: ubuntu-latest
+    environment: qa
+    steps:    
+    - name: Checkout this repo
+      uses: actions/checkout@v4
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - name: Deploy to qa
+      run: |
+        mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
+        -Dclient.id="${{ secrets.CONNECTED_APP_CLIENT_ID }}" \
+        -Dclient.secret="${{ secrets.CONNECTED_APP_CLIENT_SECRET }}" \
+        -Ddecryption.key="${{ secrets.securekey }}" \
+        -Dmule.env=qa \
+        -Denv=qa \
+        -Dappname=algolia-app-qa-ch2 \
+        -Danypoint.platform.client_id="${{secrets.org_client_id}}" \
+        -Danypoint.platform.client_secret="${{secrets.org_client_secret}}"
+  
+  deployprod:
+    needs: deployqa
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:    
+    - name: Checkout this repo
+      uses: actions/checkout@v4
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - name: Deploy to prod
+      run: |
+        mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
+        -Dclient.id="${{ secrets.CONNECTED_APP_CLIENT_ID }}" \
+        -Dclient.secret="${{ secrets.CONNECTED_APP_CLIENT_SECRET }}" \
+        -Ddecryption.key="${{ secrets.securekey }}" \
+        -Dmule.env=prod \
+        -Denv=prod \
+        -Dappname=algolia-app-prod-ch2 \
+        -Danypoint.platform.client_id="${{secrets.org_client_id}}" \
+        -Danypoint.platform.client_secret="${{secrets.org_client_secret}}"
+         

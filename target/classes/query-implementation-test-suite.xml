@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+<munit:config name="query-implementation-test-suite.xml" />
+<munit:test name="query-implementation-test-suite-salesforceQueryimplementationSub_FlowTest" doc:id="9b913d76-f99c-47a4-8f67-e9539bb55edb" description="Test">
+<munit:behavior >
+<munit-tools:mock-when doc:name="Mock when" doc:id="72966e3e-5f16-4da6-a3b1-732eae68fea0" processor="salesforce:query-all">
+<munit-tools:with-attributes >
+<munit-tools:with-attribute whereValue="Query all" attributeName="doc:name" />
+<munit-tools:with-attribute whereValue="7a1b9548-4c03-4dda-9ffc-ed39d0007715" attributeName="doc:id" />
+</munit-tools:with-attributes>
+</munit-tools:mock-when>
+</munit:behavior>
+<munit:execution >
+<flow-ref doc:name="Flow-ref to salesforceQueryimplementationSub_Flow" doc:id="19df4307-6d34-4844-9a44-0e19685c525d" name="salesforceQueryimplementationSub_Flow"/>
+</munit:execution>
+<munit:validation >
+<munit-tools:assert-that doc:name="Assert that" doc:id="9e7b48b0-b31d-47ab-8798-7ca93ee2fbc1" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+</munit:validation>
+</munit:test>
+<munit:test name="query-implementation-test-suite-salesforceQueryimplementationSub_FlowTest1" doc:id="6aaac0e0-2f93-43b3-840b-5bcd9ecdd502" description="Test" >
+<munit:behavior>
+<munit-tools:mock-when doc:name="Mock when" doc:id="f1a57212-c021-4957-85ea-ca90dd5f40ed" processor="salesforce:query-all">
+<munit-tools:with-attributes >
+<munit-tools:with-attribute whereValue="Query all" attributeName="doc:name" />
+<munit-tools:with-attribute whereValue="7a1b9548-4c03-4dda-9ffc-ed39d00077" attributeName="doc:id" />
+</munit-tools:with-attributes>
+</munit-tools:mock-when>
+</munit:behavior>
+<munit:execution>
+<try doc:name="Try" doc:id="64359bc0-151e-4a29-824e-72fb7198d7dc" >
+<flow-ref doc:name="Flow-ref to salesforceQueryimplementationSub_Flow" doc:id="69a5dcd3-b35d-4acd-ba2b-5bf38a3f07e7" name="algolia-api-main" />
+<error-handler >
+<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="ef224419-0f0c-4ed2-87ae-654ea6aeaf21" type="ANY"/>
+</error-handler>
+</try>
+</munit:execution>
+<munit:validation >
+<munit-tools:assert-that doc:name="Assert that" doc:id="f1e54c85-babb-4f3f-affb-9acbb704200d" expression="#[payload]" is="#[MunitTools::notNullValue()]" />
+</munit:validation>
+</munit:test>
+<munit:test name="query-implementation-test-suite-salesforceQueryimplementationSub_FlowTest2" doc:id="3decbab6-396a-4498-b3fd-7a285b107f1d" description="Test" >
+<munit:behavior >
+<munit-tools:mock-when doc:name="Mock when" doc:id="f63bcba3-eba9-44d7-8d44-5507664ab755" processor="salesforce:query-all" >
+<munit-tools:with-attributes >
+<munit-tools:with-attribute whereValue="Query all" attributeName="doc:name" />
+<munit-tools:with-attribute whereValue="7a1b9548-4c03-4dda-9ffc-ed39d00077" attributeName="doc:id" />
+</munit-tools:with-attributes>
+</munit-tools:mock-when>
+</munit:behavior>
+<munit:execution >
+<try doc:name="Try" doc:id="b9e165f2-9b51-4ee8-b734-8be675425cb0" >
+<flow-ref doc:name="get:\algolia:algolia-api-config" doc:id="9f2c3d4c-c3d7-4281-8895-40e722337d8b" name="get:\algolia:algolia-api-config" />
+<error-handler >
+<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="aacbe818-a646-4245-8de7-04292e4c45d0" type="ANY" />
+</error-handler>
+</try>
+</munit:execution>
+<munit:validation >
+<munit-tools:assert-that doc:name="Assert that" doc:id="0a88e384-cae6-4b5c-aa81-3f1bf4521388" expression="#[payload]" is="#[MunitTools::notNullValue()]" />
+</munit:validation>
+</munit:test>
+<munit:test name="query-implementation-test-suite-salesforceQueryimplementationSub_FlowTest3" doc:id="32d82fab-4a91-437d-8bc2-2ab0be9b5037" description="Test" >
+<munit:behavior >
+<munit-tools:mock-when doc:name="Mock when" doc:id="1acd5fd7-12df-492e-a831-99f284acdb15" processor="salesforce:query-all" >
+<munit-tools:with-attributes >
+<munit-tools:with-attribute whereValue="Query all" attributeName="doc:name" />
+<munit-tools:with-attribute whereValue="7a1b9548-4c03-4dda-9ffc-ed39d00077" attributeName="doc:id" />
+</munit-tools:with-attributes>
+</munit-tools:mock-when>
+</munit:behavior>
+<munit:execution >
+<try doc:name="Try" doc:id="97e95791-d50a-4bc5-b2cf-5af59b6bc6a1" >
+<flow-ref doc:name="post:\algolia:application\json:algolia-api-config" doc:id="3d7ac44e-66f9-4150-99d5-feb50fcd7e84" name="post:\algolia:application\json:algolia-api-config" />
+<error-handler >
+<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="9e93ff17-3ec6-4f31-804e-b0a71372c6b3" type="ANY" />
+</error-handler>
+</try>
+</munit:execution>
+<munit:validation >
+<munit-tools:assert-that doc:name="Assert that" doc:id="a538e4c2-27b2-4072-ac34-1356df618240" expression="#[payload]" is="#[MunitTools::notNullValue()]" />
+</munit:validation>
+</munit:test>
+<munit:test name="query-implementation-test-suite-salesforceQueryimplementationSub_FlowTest4" doc:id="6314a4b1-e53f-4892-813a-9d43e92b4c4b" description="Test" >
+<munit:behavior >
+<munit-tools:mock-when doc:name="Mock when" doc:id="204c4127-1573-406d-b3f1-724f1dce0a9e" processor="salesforce:query-all" >
+<munit-tools:with-attributes >
+<munit-tools:with-attribute whereValue="Query all" attributeName="doc:name" />
+<munit-tools:with-attribute whereValue="7a1b9548-4c03-4dda-9ffc-ed39d00077" attributeName="doc:id" />
+</munit-tools:with-attributes>
+</munit-tools:mock-when>
+</munit:behavior>
+<munit:execution >
+<try doc:name="Try" doc:id="80f133d8-e551-4057-ab54-b658c686a564" >
+<flow-ref doc:name="algolia-api-console" doc:id="36f93e13-026f-4c86-9d63-c71d347b87cb" name="algolia-api-console" />
+<error-handler >
+<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="1da71fda-a3ca-4701-8d9b-845f241c33cb" type="ANY" />
+</error-handler>
+</try>
+</munit:execution>
+<munit:validation >
+<munit-tools:assert-that doc:name="Assert that" doc:id="5d65ac08-d105-416d-a61b-2f5fd417b299" expression="#[payload]" is="#[MunitTools::notNullValue()]" />
+</munit:validation>
+</munit:test>
+ 
+ 
+</mule>
