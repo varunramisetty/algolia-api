@@ -1,0 +1,10 @@
+api:
+  id: "19593583"
+platform:
+  client_id: "![S17BUxpDBvix6g64MP2ZGLUnCeA7unO56b/dTKbo6KX2MOvhMfBPWQ==]"
+  client_secret: "![8mRhJqMvmgeAeUlZAbRuMYQy2siX6vo/VpAtEv7ZWEt1WbZBJ4PzIQ==]"
+
+salesforce:
+  username: "![foKQrVSLEOjELQMJQyBlyhLg4YeStOrC7s3ShEPVyhc=]"
+  password: "![LBlKW5jyrFChQdxwstwzrw==]"
+  token: "![5bZKLspbo6bFbcO1Z61cDKQc+Sd2Od+35BNwQohijFk=]"
