@@ -7,7 +7,7 @@
 	<version>1.0.10</version>
 	<packaging>mule-application</packaging>
 
-	<name>algolia-api-ch2-test1</name>
+	<name>algolia-api-ch2-test11</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
