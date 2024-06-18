@@ -3,7 +3,7 @@
     <pluginGroups>
         <pluginGroup>org.mule.tools</pluginGroup>
     </pluginGroups>
-
+   <servers>
         <server>
             <id>MuleRepository</id>
             <username>${nexus_username}</username>
